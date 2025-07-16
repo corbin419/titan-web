@@ -2,6 +2,9 @@
 import {ref, onMounted, onBeforeUnmount} from 'vue';
 import LOGO from '@/assets/img/LOGO.jpg';
 import summerBook from '@/assets/img/summer.jpg';
+import farBook from '@/assets/img/farbook.png';
+import giveupBook from '@/assets/img/giveup.png';
+import rainBook from '@/assets/img/rainbook.png';
 
 const menuItems = [
   {
@@ -36,15 +39,15 @@ const menuItems = [
       },
       {
         title: '當我開始遠行',
-        img: summerBook,
+        img: farBook,
       },
       {
         title: '在雨中相逢',
-        img: summerBook,
+        img: rainBook,
       },
       {
         title: '放棄之前，我從沒想過相信',
-        img: summerBook,
+        img: giveupBook,
       },
     ],
   },
@@ -62,6 +65,7 @@ const menuItems = [
 
 //placeholder 文字
 const placeholderMap = {
+  全部: '搜尋',
   書名: '請輸入書名',
   作者: '請輸入作者名稱',
   ISBN: '請輸入書籍 ISBN ',
@@ -70,16 +74,15 @@ const placeholderMap = {
 const openIndex = ref(null);
 const navRef = ref(null);
 const isSearchOpen = ref(false);
-const searchType = ref('書名'); // 預設搜尋類型
+const searchType = ref('全部'); // 預設搜尋類型
 const showTypeDropdown = ref(false);
 const keyword = ref('');
+const searchTypes = ['全部', '書名', '作者', 'ISBN'];
 
 function selectSearchType(type) {
   searchType.value = type;
   showTypeDropdown.value = false;
 }
-
-const searchTypes = ['書名', '作者', 'ISBN'];
 
 function toggleSearch() {
   isSearchOpen.value = !isSearchOpen.value;
@@ -124,14 +127,14 @@ onBeforeUnmount(() => {
     </div>
 
     <!-- 選單選項 -->
-    <ul class="flex flex-row gap-4 flex-[8_8_0%] justify-center items-center relative">
+    <ul
+      class="flex flex-row gap-3 flex-[8_8_0%] justify-between items-center relative max-w-[1070px] px-4">
       <li
         v-for="(item, index) in menuItems"
         :key="index"
         class="relative group px-2 py-1 cursor-pointer text-gray-700 select-none"
         @click.stop="toggleDropdown(index)">
         <span class="z-10 relative">{{ item.name }}</span>
-
         <!-- 底線（hover 用） -->
         <div
           class="absolute bottom-0 left-0 w-full h-[2px] bg-[#D6E6DC] rounded-full scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></div>
@@ -143,11 +146,11 @@ onBeforeUnmount(() => {
       v-if="openIndex !== null"
       class="absolute top-full left-0 w-full bg-white border-t border-gray-300 shadow-lg z-40"
       @click.stop>
-      <div class="max-w-[1200px] mx-auto px-6 py-4 flex justify-center items-center">
+      <div class="max-w-[1070px] mx-auto flex justify-center items-center">
         <!-- 純文字分類 -->
         <div
           v-if="menuItems[openIndex].type === 'text'"
-          class="grid grid-cols-4 gap-3 p-4 min-w-[60%] px-6">
+          class="grid grid-cols-4 gap-3 p-4 px-6 w-full">
           <div
             v-for="(subitem, i) in menuItems[openIndex].subitems"
             :key="i"
@@ -159,9 +162,9 @@ onBeforeUnmount(() => {
         <!-- 卡片格式精選 -->
         <div
           v-else-if="menuItems[openIndex].type === 'withBanner'"
-          class="flex w-[60%] justify-center items-center">
+          class="flex justify-center items-center w-[1070px]">
           <!-- 左邊子選單 -->
-          <div class="flex flex-col gap-4 w-1/4 text-gray-700">
+          <div class="flex flex-col gap-4 w-1/4 text-gray-700 py-6">
             <div
               v-for="(option, i) in menuItems[openIndex].options"
               :key="i"
@@ -171,7 +174,7 @@ onBeforeUnmount(() => {
           </div>
 
           <!-- 右邊推薦卡片 -->
-          <div class="flex gap-auto w-3/4 overflow-x-auto justify-end">
+          <div class="flex gap-4 w-3/4 overflow-x-auto justify-center">
             <div
               v-for="(book, i) in menuItems[openIndex].banner"
               :key="i"
@@ -203,12 +206,12 @@ onBeforeUnmount(() => {
       v-if="isSearchOpen"
       class="absolute top-full left-0 w-full bg-white border-t border-gray-300 shadow-lg z-40"
       @click.stop>
-      <div class="max-w-[1200px] mx-auto px-6 py-4">
-        <div class="flex gap-2">
+      <div class="max-w-[1070px] mx-auto px-6 py-4">
+        <div class="flex">
           <!-- 類型下拉 -->
           <div class="relative">
             <button
-              class="border border-gray-300 rounded px-4 py-2 text-gray-700 hover:bg-gray-50 flex items-center gap-1"
+              class="border border-gray-300 px-4 py-2 text-gray-700 hover:bg-gray-50 flex items-center gap-1 rounded-tl-full rounded-bl-full"
               @click="showTypeDropdown = !showTypeDropdown">
               {{ searchType }} <span class="text-sm">▼</span>
             </button>
@@ -231,11 +234,10 @@ onBeforeUnmount(() => {
             v-model="keyword"
             type="text"
             :placeholder="placeholderMap[searchType]"
-            class="flex-1 border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-400" />
-
+            class="flex-1 border border-gray-300 rounded px-4 py-2 focus:outline-none min-w-fit bg-[#F3F5F4] rounded-tr-full rounded-br-full" />
           <!-- 搜尋按鈕 -->
-          <button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition">
-            搜尋
+          <button class="text-white px-4 py-2 rounded">
+            <font-awesome-icon icon="magnifying-glass" class="text-gray-500" />
           </button>
         </div>
       </div>
