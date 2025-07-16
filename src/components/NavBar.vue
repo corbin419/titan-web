@@ -61,6 +61,12 @@ const menuItems = [
 ];
 const openIndex = ref(null);
 const navRef = ref(null);
+const isSearchOpen = ref(false);
+
+function toggleSearch() {
+  isSearchOpen.value = !isSearchOpen.value;
+  openIndex.value = null; // 如果正在開其他選單就關掉
+}
 
 function toggleDropdown(index) {
   const item = menuItems[index];
@@ -76,6 +82,10 @@ function onClickOutside(event) {
   if (!navRef.value) return;
   if (!navRef.value.contains(event.target)) {
     openIndex.value = null;
+  }
+  if (!navRef.value.contains(event.target)) {
+    openIndex.value = null;
+    isSearchOpen.value = false; //搜尋欄位
   }
 }
 
@@ -164,11 +174,23 @@ onBeforeUnmount(() => {
     </div>
 
     <!-- 搜尋/書櫃 icon -->
-    <div class="flex-[2_2_0%]">
-      <ul>
-        <li><font-awesome-icon icon="magnifying-glass" /></li>
-        <li></li>
-      </ul>
+    <div class="flex-[2_2_0%] flex items-center justify-center gap-4">
+      <font-awesome-icon icon="magnifying-glass" class="text-gray-500" @click="toggleSearch" />
+      <font-awesome-icon
+        :icon="['far', 'heart']"
+        class="text-gray-500 hover:text-red-500 transition-colors duration-300" />
+    </div>
+    <!-- 搜尋欄下拉區塊 -->
+    <div
+      v-if="isSearchOpen"
+      class="absolute top-full left-0 w-full bg-white border-t border-gray-300 shadow-lg z-40"
+      @click.stop>
+      <div class="max-w-[1200px] mx-auto px-6 py-4">
+        <input
+          type="text"
+          placeholder="請輸入書名、作者、關鍵字"
+          class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-400" />
+      </div>
     </div>
   </nav>
 </template>
