@@ -59,9 +59,27 @@ const menuItems = [
     banner: [],
   },
 ];
+
+//placeholder 文字
+const placeholderMap = {
+  書名: '請輸入書名',
+  作者: '請輸入作者名稱',
+  ISBN: '請輸入書籍 ISBN ',
+};
+
 const openIndex = ref(null);
 const navRef = ref(null);
 const isSearchOpen = ref(false);
+const searchType = ref('書名'); // 預設搜尋類型
+const showTypeDropdown = ref(false);
+const keyword = ref('');
+
+function selectSearchType(type) {
+  searchType.value = type;
+  showTypeDropdown.value = false;
+}
+
+const searchTypes = ['書名', '作者', 'ISBN'];
 
 function toggleSearch() {
   isSearchOpen.value = !isSearchOpen.value;
@@ -186,10 +204,40 @@ onBeforeUnmount(() => {
       class="absolute top-full left-0 w-full bg-white border-t border-gray-300 shadow-lg z-40"
       @click.stop>
       <div class="max-w-[1200px] mx-auto px-6 py-4">
-        <input
-          type="text"
-          placeholder="請輸入書名、作者、關鍵字"
-          class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-400" />
+        <div class="flex gap-2">
+          <!-- 類型下拉 -->
+          <div class="relative">
+            <button
+              class="border border-gray-300 rounded px-4 py-2 text-gray-700 hover:bg-gray-50 flex items-center gap-1"
+              @click="showTypeDropdown = !showTypeDropdown">
+              {{ searchType }} <span class="text-sm">▼</span>
+            </button>
+            <!-- 下拉選單 -->
+            <ul
+              v-if="showTypeDropdown"
+              class="absolute top-full left-0 mt-1 bg-white border border-gray-300 rounded shadow z-10 w-full">
+              <li
+                v-for="type in searchTypes"
+                :key="type"
+                @click="selectSearchType(type)"
+                class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                {{ type }}
+              </li>
+            </ul>
+          </div>
+
+          <!-- 搜尋輸入框 -->
+          <input
+            v-model="keyword"
+            type="text"
+            :placeholder="placeholderMap[searchType]"
+            class="flex-1 border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-400" />
+
+          <!-- 搜尋按鈕 -->
+          <button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition">
+            搜尋
+          </button>
+        </div>
       </div>
     </div>
   </nav>

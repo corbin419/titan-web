@@ -8,7 +8,7 @@ import router from './router';
 
 const app = createApp(App);
 
-// 引入 fontawesome
+// 引入 font awesome
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
 
