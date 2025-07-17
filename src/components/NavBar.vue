@@ -2,9 +2,9 @@
 import {ref, onMounted, onBeforeUnmount} from 'vue';
 import LOGO from '@/assets/img/LOGO.jpg';
 import summerBook from '@/assets/img/summer.jpg';
-import farBook from '@/assets/img/farbook.png';
-import giveupBook from '@/assets/img/giveup.png';
-import rainBook from '@/assets/img/rainbook.png';
+import farBook from '@/assets/img/farBook.png';
+import giveUpBook from '@/assets/img/giveUp.png';
+import rainBook from '@/assets/img/rainBook.png';
 
 const menuItems = [
   {
@@ -47,7 +47,7 @@ const menuItems = [
       },
       {
         title: '放棄之前，我從沒想過相信',
-        img: giveupBook,
+        img: giveUpBook,
       },
     ],
   },
@@ -78,6 +78,7 @@ const searchType = ref('全部'); // 預設搜尋類型
 const showTypeDropdown = ref(false);
 const keyword = ref('');
 const searchTypes = ['全部', '書名', '作者', 'ISBN'];
+const roundedBtn = ['法比歐', '高木直子', '台灣熱帶植物', '腦力訓練', '日語自學', '英語詞彙'];
 
 function selectSearchType(type) {
   searchType.value = type;
@@ -186,11 +187,9 @@ onBeforeUnmount(() => {
         </div>
       </div>
 
-      <!-- 最下方提示（僅限全部書籍） -->
-      <div
-        class="w-full flex justify-center items-center p-1 bg-gray-100"
-        v-if="menuItems[openIndex].name === '全部書籍' || '精選書單'">
-        <span>全部書籍 ></span>
+      <!-- 最下方提示 -->
+      <div class="w-full flex justify-center items-center p-1 bg-gray-100">
+        <span>{{ menuItems[openIndex].name }} ></span>
       </div>
     </div>
 
@@ -204,7 +203,7 @@ onBeforeUnmount(() => {
     <!-- 搜尋欄下拉區塊 -->
     <div
       v-if="isSearchOpen"
-      class="absolute top-full left-0 w-full bg-white border-t border-gray-300 shadow-lg z-40"
+      class="absolute top-full left-0 w-full bg-white border-t border-gray-300 shadow-lg z-40 flex-col"
       @click.stop>
       <div class="max-w-[1070px] mx-auto px-6 py-4">
         <div class="flex">
@@ -228,7 +227,6 @@ onBeforeUnmount(() => {
               </li>
             </ul>
           </div>
-
           <!-- 搜尋輸入框 -->
           <input
             v-model="keyword"
@@ -238,6 +236,14 @@ onBeforeUnmount(() => {
           <!-- 搜尋按鈕 -->
           <button class="text-white px-4 py-2 rounded">
             <font-awesome-icon icon="magnifying-glass" class="text-gray-500" />
+          </button>
+        </div>
+      </div>
+      <div class="max-w-[1070px] mx-auto flex flex-col items-center gap-3 py-2">
+        <span>其他讀者都在搜</span>
+        <div class="flex justify-center gap-4">
+          <button class="bg-gray-50 rounded-full p-3" v-for="(btnName, i) in roundedBtn" :key="i">
+            {{ btnName }}
           </button>
         </div>
       </div>
