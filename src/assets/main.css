@@ -1,2 +1,6 @@
 /* main.css */
-@import "tailwindcss";
+@import 'tailwindcss';
+
+@theme {
+  --font-noto: 'Noto Serif TC', 'serif';
+}

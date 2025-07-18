@@ -98,16 +98,15 @@ function toggleDropdown(index) {
     item.type === 'withBanner';
 
   openIndex.value = hasDropdown ? (openIndex.value === index ? null : index) : null;
-}
+} //
 
+//點外面關閉
 function onClickOutside(event) {
   if (!navRef.value) return;
+
   if (!navRef.value.contains(event.target)) {
     openIndex.value = null;
-  }
-  if (!navRef.value.contains(event.target)) {
-    openIndex.value = null;
-    isSearchOpen.value = false; //搜尋欄位
+    isSearchOpen.value = false; // 搜尋欄位
   }
 }
 
