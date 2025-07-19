@@ -2,5 +2,19 @@
 @import 'tailwindcss';
 
 @theme {
+  /* 顏色 */
+  --color-green-main: #417254;
+  --color-green-gray: #728e7d;
+  --color-green-light2: #d6e6dc;
+  --color-gradient-green-light: #f3f5f4;
+  --color-gradient-beige: #f6f4f0;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-light-black: #464646;
+  --color-gray: #969696;
+  --color-light-gray: #d0d0d0;
+  --color-heart: #ff717171;
+  /* 字型 */
   --font-noto: 'Noto Serif TC', 'serif';
+  --font-noto-sans: '"Noto Sans"', 'sans-serif';
 }

@@ -120,7 +120,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <nav ref="navRef" class="relative h-[100px] bg-white shadow-md flex flex-row font-noto">
+  <nav ref="navRef" class="relative h-[100px] bg-white shadow-md flex flex-row">
     <!-- LOGO -->
     <div class="flex-[2_2_0%] flex justify-center items-center">
       <img :src="LOGO" alt="大田LOGO" class="w-[60px] h-[60px]" />
@@ -132,12 +132,12 @@ onBeforeUnmount(() => {
       <li
         v-for="(item, index) in menuItems"
         :key="index"
-        class="relative group px-2 py-1 cursor-pointer text-gray-700 select-none"
+        class="relative group px-2 py-1 cursor-pointer select-none font-noto text-[20px] text-light-black font-[600] hover:text-green-gray"
         @click.stop="toggleDropdown(index)">
         <span class="z-10 relative">{{ item.name }}</span>
         <!-- 底線（hover 用） -->
         <div
-          class="absolute bottom-0 left-0 w-full h-[2px] bg-[#D6E6DC] rounded-full scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></div>
+          class="absolute bottom-0 left-0 w-full h-[3px] bg-[#D6E6DC] rounded-t-full scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></div>
       </li>
     </ul>
 
@@ -150,11 +150,11 @@ onBeforeUnmount(() => {
         <!-- 純文字分類 -->
         <div
           v-if="menuItems[openIndex].type === 'text'"
-          class="grid grid-cols-4 gap-3 p-4 px-6 w-full">
+          class="grid grid-cols-6 gap-4 p-4 px-6 w-full">
           <div
             v-for="(subitem, i) in menuItems[openIndex].subitems"
             :key="i"
-            class="text-gray-700 hover:text-green-700 cursor-pointer">
+            class="text-light-black hover:text-green-gray cursor-pointer font-noto-sans">
             {{ subitem }}
           </div>
         </div>
