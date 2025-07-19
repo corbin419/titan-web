@@ -1,5 +1,5 @@
 <script setup>
-import LOGO from '@/assets/img/LOGO.jpg';
+import LOGO from '@/assets/img/taitan-logo.jpg';
 </script>
 
 <template>
