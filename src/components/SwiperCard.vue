@@ -82,7 +82,7 @@ const responsiveSize = 'w-[300px] h-[420px]'; // 你可以調整這裡大小
           <img :src="card.image" alt="poster" class="w-full h-64 object-cover" />
           <div class="p-3">
             <h3 class="text-base font-semibold truncate">{{ card.title }}</h3>
-            <p class="text-sm text-gray-500 truncate">{{ card.author }}</p>
+            <p class="text-sm text-light-black truncate">{{ card.author }}</p>
           </div>
         </div>
       </div>
