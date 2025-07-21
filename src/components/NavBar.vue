@@ -132,19 +132,19 @@ onBeforeUnmount(() => {
       <li
         v-for="(item, index) in menuItems"
         :key="index"
-        class="relative group px-2 py-1 cursor-pointer select-none font-noto text-[20px] text-light-black font-[600] hover:text-green-gray"
+        class="relative group px-2 py-1 cursor-pointer select-none font-noto text-[20px] text-light-black hover:text-green-gray"
         @click.stop="toggleDropdown(index)">
         <span class="z-10 relative">{{ item.name }}</span>
         <!-- 底線（hover 用） -->
         <div
-          class="absolute bottom-0 left-0 w-full h-[3px] bg-[#D6E6DC] rounded-t-full scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></div>
+          class="absolute bottom-0 left-0 w-full h-[3px] bg-green-light2 rounded-t-full scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></div>
       </li>
     </ul>
 
     <!-- 下拉選單（點擊展開） -->
     <div
       v-if="openIndex !== null"
-      class="absolute top-full left-0 w-full bg-white border-t border-gray-300 shadow-lg z-40"
+      class="absolute top-full left-0 w-full bg-white border-t border-light-gray shadow-lg z-40"
       @click.stop>
       <div class="max-w-[1070px] mx-auto flex justify-center items-center">
         <!-- 純文字分類 -->
@@ -164,11 +164,11 @@ onBeforeUnmount(() => {
           v-else-if="menuItems[openIndex].type === 'withBanner'"
           class="flex justify-center items-center w-[1070px]">
           <!-- 左邊子選單 -->
-          <div class="flex flex-col gap-4 w-1/4 text-gray-700 py-6">
+          <div class="flex flex-col gap-4 w-1/4 text-light-black py-6">
             <div
               v-for="(option, i) in menuItems[openIndex].options"
               :key="i"
-              class="flex items-center cursor-pointer hover:text-green-700 px-6">
+              class="flex items-center cursor-pointer hover:text-green-gray px-6">
               <span>{{ option }}&gt;</span>
             </div>
           </div>
@@ -180,48 +180,51 @@ onBeforeUnmount(() => {
               :key="i"
               class="flex flex-col items-center cursor-pointer hover:shadow-lg transition p-2 rounded max-w-[120px]">
               <img :src="book.img" alt="book.title" class="w-24 h-32 object-cover rounded" />
-              <span class="mt-2 text-sm text-center text-gray-800">{{ book.title }}</span>
+              <span class="mt-2 text-sm text-center text-gray">{{ book.title }}</span>
             </div>
           </div>
         </div>
       </div>
 
       <!-- 最下方提示 -->
-      <div class="w-full flex justify-center items-center p-1 bg-gray-100">
+      <div class="w-full flex justify-center items-center p-1 bg-light-gray">
         <span>{{ menuItems[openIndex].name }} ></span>
       </div>
     </div>
 
     <!-- 搜尋/書櫃 icon -->
     <div class="flex-[2_2_0%] flex items-center justify-center gap-4">
-      <font-awesome-icon icon="magnifying-glass" class="text-gray-500" @click="toggleSearch" />
       <font-awesome-icon
-        :icon="['far', 'heart']"
-        class="text-gray-500 hover:text-red-500 transition-colors duration-300" />
+        :icon="['fas', 'magnifying-glass']"
+        class="text-light-black hover:text-light-gray"
+        @click="toggleSearch" />
+      <font-awesome-icon
+        :icon="['fas', 'heart']"
+        class="text-light-black hover:text-red-500 transition-colors duration-300" />
     </div>
     <!-- 搜尋欄下拉區塊 -->
     <div
       v-if="isSearchOpen"
-      class="absolute top-full left-0 w-full bg-white border-t border-gray-300 shadow-lg z-40 flex-col"
+      class="absolute top-full left-0 w-full bg-white border-t border-light-gray shadow-lg z-40 flex-col"
       @click.stop>
       <div class="max-w-[1070px] mx-auto px-6 py-4">
         <div class="flex">
           <!-- 類型下拉 -->
           <div class="relative">
             <button
-              class="border border-gray-300 px-4 py-2 text-gray-700 hover:bg-gray-50 flex items-center gap-1 rounded-tl-full rounded-bl-full"
+              class="border border-light-gray px-4 py-2 text-gray hover:bg-light-gray flex items-center gap-1 rounded-tl-full rounded-bl-full"
               @click="showTypeDropdown = !showTypeDropdown">
               {{ searchType }} <span class="text-sm">▼</span>
             </button>
             <!-- 下拉選單 -->
             <ul
               v-if="showTypeDropdown"
-              class="absolute top-full left-0 mt-1 bg-white border border-gray-300 rounded shadow z-10 w-full">
+              class="absolute top-full left-0 mt-1 bg-white border border-light-gray rounded shadow z-10 w-full">
               <li
                 v-for="type in searchTypes"
                 :key="type"
                 @click="selectSearchType(type)"
-                class="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                class="px-4 py-2 hover:bg-light-gray cursor-pointer">
                 {{ type }}
               </li>
             </ul>
@@ -231,17 +234,20 @@ onBeforeUnmount(() => {
             v-model="keyword"
             type="text"
             :placeholder="placeholderMap[searchType]"
-            class="flex-1 border border-gray-300 rounded px-4 py-2 focus:outline-none min-w-fit bg-[#F3F5F4] rounded-tr-full rounded-br-full" />
+            class="flex-1 border border-light-gray rounded px-4 py-2 focus:outline-none min-w-fit bg-gradient-green-light rounded-tr-full rounded-br-full" />
           <!-- 搜尋按鈕 -->
           <button class="text-white px-4 py-2 rounded">
-            <font-awesome-icon icon="magnifying-glass" class="text-gray-500" />
+            <font-awesome-icon icon="magnifying-glass" class="text-gray" />
           </button>
         </div>
       </div>
       <div class="max-w-[1070px] mx-auto flex flex-col items-center gap-3 py-2">
         <span>其他讀者都在搜</span>
         <div class="flex justify-center gap-4">
-          <button class="bg-gray-50 rounded-full p-3" v-for="(btnName, i) in roundedBtn" :key="i">
+          <button
+            class="bg-light-gray rounded-full p-3"
+            v-for="(btnName, i) in roundedBtn"
+            :key="i">
             {{ btnName }}
           </button>
         </div>
