@@ -16,8 +16,18 @@ import {faHeart} from '@fortawesome/free-solid-svg-icons';
 
 // 選擇你要用的 icon（以下為 magnifying-glass 範例）
 import {faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
+import {faHeart as faHeartRegular} from '@fortawesome/free-regular-svg-icons';
+import { faSquareFacebook, faSquareInstagram, faYoutube, faLine } from '@fortawesome/free-brands-svg-icons'
 
-library.add(faMagnifyingGlass, faHeart);
+
+library.add(
+  faMagnifyingGlass,
+  faHeartRegular,
+  faSquareFacebook,
+  faSquareInstagram,
+  faYoutube,
+  faLine
+);
 
 app.use(createPinia());
 app.use(router);
