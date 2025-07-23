@@ -1,10 +1,9 @@
 <script setup>
 import NavBar from './components/NavBar.vue';
-import SwiperCard from './components/SwiperCard.vue';
+import HomePage from './views/HomePage.vue';
 </script>
 
 <template>
   <NavBar />
-  <SwiperCard />
-  <!-- <h1 class="text-3xl font-bold underline ">Hello world!</h1> -->
+  <HomePage />
 </template>
