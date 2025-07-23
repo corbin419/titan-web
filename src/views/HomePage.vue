@@ -2,6 +2,7 @@
 import SwiperCard from '@/components/SwiperCard.vue';
 import BannerBook from '@/assets/img/BannerBook-01.jpg';
 import CtaBanner from '@/assets/img/CtaBanner.jpg';
+import BookCarousel from '@/components/BookCarousel.vue';
 
 const ctaBtn = [
   {id: 1, name: '全部書籍'},
@@ -74,5 +75,8 @@ const ctaBtn = [
     </div>
   </section>
   <!-- 書籍推薦區域 -->
-  <section></section>
+  <section class="flex flex-col w-[1200px] mx-auto p-20 gap-20">
+    <BookCarousel />
+    <BookCarousel title="好書推薦"/>
+  </section>
 </template>
