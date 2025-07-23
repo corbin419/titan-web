@@ -6,5 +6,4 @@ import HomePage from './views/HomePage.vue';
 <template>
   <NavBar />
   <HomePage />
-  <HomePage />
 </template>
