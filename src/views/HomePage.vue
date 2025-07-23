@@ -27,7 +27,7 @@ const ctaBtn = [
           有些書適合晴天閱讀，有些則只在夜裡低語。這份書單，為孤獨、潮濕而需要字句取暖的你而準備。
         </p>
         <div
-          class="text-green-main hover:underline underline-offset-4 decoration-2 cursor-pointer font-bold">
+          class="text-green-main hover:underline underline-offset-4 decoration-2 cursor-pointer font-bold w-fit">
           查看書單 &gt;
         </div>
       </div>
@@ -52,7 +52,7 @@ const ctaBtn = [
         我點點頭，將書闔上，終於不再假裝閱讀。「那我們來泡杯茶吧，這雨還會下很久。」
       </div>
       <div
-        class="text-green-main hover:underline underline-offset-4 decoration-2 cursor-pointer font-bold">
+        class="text-green-main hover:underline underline-offset-4 decoration-2 cursor-pointer font-bold w-fit">
         閱讀試閱 &gt;
       </div>
     </div>
@@ -76,4 +76,3 @@ const ctaBtn = [
   <!-- 書籍推薦區域 -->
   <section></section>
 </template>
-
