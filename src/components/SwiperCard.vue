@@ -1,34 +1,27 @@
 <script setup>
 import {ref, onMounted, onBeforeUnmount} from 'vue';
-import FarBook from '@/assets/img/farbook.png';
-import GiveUpBook from '@/assets/img/giveup.png';
-import RainBook from '@/assets/img/rainbook.png';
-import SummerBook from '@/assets/img/summer.jpg';
+import FarBook from '@/assets/img/Swiper/SwiperBook-01.jpg';
+import GiveUpBook from '@/assets/img/Swiper/SwiperBook-02.jpg';
+import RainBook from '@/assets/img/Swiper/SwiperBook-03.jpg';
 
 const allCards = ref([
   {
     id: 1,
     image: FarBook,
     title: '當我開始遠行之後',
-    author: '與其害怕 就出發',
+    author: '布莉安娜．魏斯禮',
   },
   {
     id: 2,
     image: GiveUpBook,
-    title: '放棄之前，我從沒想過相信',
-    author: '小日子選書',
+    title: '像想念一樣生活',
+    author: '黃沛綺',
   },
   {
     id: 3,
     image: RainBook,
-    title: '在雨中相逢',
-    author: '讀者推薦',
-  },
-  {
-    id: 4,
-    image: SummerBook,
-    title: '那年夏天的海風',
-    author: '文藝特輯',
+    title: '迷霧花園裡的秘密小徑',
+    author: '布莉安娜．魏斯禮',
   },
 ]);
 
@@ -47,7 +40,7 @@ const stopAutoSlide = () => {
   clearInterval(timer);
 };
 
-// 📌 點擊卡片 → 移到最上層
+// 點擊卡片 → 移到最上層
 const bringToFront = (index) => {
   const selected = visibleCards.value.splice(index, 1)[0];
   visibleCards.value.unshift(selected);
@@ -61,7 +54,6 @@ const responsiveSize = 'w-[300px] h-[420px]'; // 你可以調整這裡大小
 
 <template>
   <div class="flex flex-col items-center space-y-4">
-    <!-- 卡片區塊 -->
     <div
       class="relative mx-auto"
       :class="responsiveSize"
@@ -73,14 +65,14 @@ const responsiveSize = 'w-[300px] h-[420px]'; // 你可以調整這裡大小
         class="absolute transition-all duration-700 ease-in-out cursor-pointer"
         :style="{
           zIndex: visibleCards.length - i,
-          transform: `translateX(${i * 40}px) scale(${1 - i * 0.05})`,
+          transform: `translateX(${i * 40}px)`,
           opacity: 1 - i * 0.1,
-          transitionDelay: `${i * 100}ms`, // 加入延遲動畫
+          transitionDelay: `${i * 100}ms`,
         }"
         @click="bringToFront(i)">
-        <div class="w-full h-full bg-white rounded-xl shadow-xl overflow-hidden">
-          <img :src="card.image" alt="poster" class="w-full h-64 object-cover" />
-          <div class="p-3">
+        <div class="overflow-hidden box-content">
+          <img :src="card.image" alt="poster" class="object-cover w-[260px] h-[360px]" />
+          <div v-if="i === 0" class="p-3">
             <h3 class="text-base font-semibold truncate">{{ card.title }}</h3>
             <p class="text-sm text-light-black truncate">{{ card.author }}</p>
           </div>
