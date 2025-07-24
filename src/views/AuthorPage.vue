@@ -42,6 +42,10 @@ const visibleBooks = computed(() => {
   const maxBooks = width.value < 640 ? 6 : 8; // 小於 sm 螢幕顯示 6 本，否則 8 本
   return isExpanded.value ? originalBooks : originalBooks.slice(0, maxBooks);
 });
+
+const trickHaHa = () => {
+  alert('哈哈騙你的!');
+};
 </script>
 
 <template>
@@ -91,7 +95,8 @@ const visibleBooks = computed(() => {
 
         <!-- 遮罩與文字：疊在影片中間 -->
         <div
-          class="absolute inset-0 flex flex-col justify-center items-center text-white text-center bg-black/30">
+          class="absolute inset-0 flex flex-col justify-center items-center text-white text-center bg-black/30"
+          @click="trickHaHa">
           <svg
             class="w-16 h-16 mb-4 fill-white"
             viewBox="0 0 24 24"
