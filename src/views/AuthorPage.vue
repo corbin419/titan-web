@@ -16,6 +16,8 @@ import VideoImg from '@/assets/img/video.jpg';
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
 import {faAngleUp, faAngleDown} from '@fortawesome/free-solid-svg-icons';
 import {library} from '@fortawesome/fontawesome-svg-core';
+import ArticleCard from '@/components/ArticleCard.vue';
+import ArticleCarousel from '@/components/ArticleCarousel.vue';
 
 library.add(faAngleUp, faAngleDown);
 
@@ -109,5 +111,9 @@ const trickHaHa = () => {
   </section>
 
   <!-- 作者活動 -->
-  <section></section>
+  <section class="p-8">
+    <div class="flex justify-center">
+      <ArticleCarousel />
+    </div>
+  </section>
 </template>
