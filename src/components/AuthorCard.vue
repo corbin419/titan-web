@@ -36,8 +36,9 @@ const isExpanded = ref(false);
         <!-- 閱讀更多按鈕 -->
         <button
           @click="isExpanded = !isExpanded"
-          class="font-noto-sans text-green-gray hover:underline decoration-2 underline-offset-4 text-left">
-          {{ isExpanded ? '收起內容 ▲' : '閱讀更多 ▼' }}
+          class="font-noto-sans text-light-black hover:underline decoration-2 underline-offset-4 text-left flex items-center gap-1">
+          <span>{{ isExpanded ? '收起內容' : '閱讀更多' }}</span>
+          <font-awesome-icon :icon="isExpanded ? ['fas', 'angle-up'] : ['fas', 'angle-down']" />
         </button>
 
         <!-- 社群 icon -->

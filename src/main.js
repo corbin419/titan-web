@@ -12,7 +12,13 @@ import {library} from '@fortawesome/fontawesome-svg-core';
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
 
 // 選擇你要用的 icon（以下為 magnifying-glass 範例）
-import {faMagnifyingGlass, faBars, faHeart} from '@fortawesome/free-solid-svg-icons';
+import {
+  faMagnifyingGlass,
+  faBars,
+  faHeart,
+  faAngleUp,
+  faAngleDown,
+} from '@fortawesome/free-solid-svg-icons';
 import {faHeart as faHeartRegular} from '@fortawesome/free-regular-svg-icons';
 import {
   faSquareFacebook,
@@ -29,7 +35,9 @@ library.add(
   faYoutube,
   faLine,
   faBars,
-  faHeart
+  faHeart,
+  faAngleUp,
+  faAngleDown
 );
 
 app.use(createPinia());
