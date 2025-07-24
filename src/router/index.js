@@ -11,7 +11,7 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/HomePage',
+      path: '/',
       name: 'Titan-HomePage',
       component: HomePage,
     },
@@ -26,17 +26,17 @@ const router = createRouter({
       component: BookFilter,
     },
     {
-      path: '/',
+      path: '/BookShelfPage',
       name: 'Titan-BookShelfPage',
       component: BookShelfPage,
     },
     {
-      path: '/',
+      path: '/BooksInfoPage',
       name: 'Titan-BooksInfoPage',
       component: BooksInfoPage,
     },
     {
-      path: '/',
+      path: '/ReadingPage',
       name: 'Titan-ReadingPage',
       component: ReadingPage,
     },
