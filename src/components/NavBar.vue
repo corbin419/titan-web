@@ -51,7 +51,7 @@ const menuItems = [
       },
     ],
   },
-  {name: '作家專區', subitems: [], type: 'none'},
+  {name: '作家專區', subitems: [], type: 'none', route: '/AuthorPage'},
   {name: '閱讀專欄', subitems: [], type: 'none'},
   {name: '最新動態', subitems: [], type: 'none'},
   {name: '關於大田', subitems: [], type: 'none'},
@@ -123,24 +123,36 @@ onBeforeUnmount(() => {
   <nav ref="navRef" class="relative h-[100px] bg-white shadow-md flex flex-row">
     <!-- LOGO -->
     <div class="flex-[2_2_0%] flex justify-center items-center">
-      <img :src="LOGO" alt="大田LOGO" class="w-[60px] h-[60px]" />
+      <router-link to="/">
+        <img :src="LOGO" alt="大田LOGO" class="w-[60px] h-[60px]" />
+      </router-link>
     </div>
 
-    <!-- 選單選項 -->
+    <!-- 主選單 -->
     <ul
       class="flex flex-row gap-3 flex-[8_8_0%] justify-between items-center relative max-w-[1070px] px-4">
       <li
         v-for="(item, index) in menuItems"
         :key="index"
-        class="relative group px-2 py-1 cursor-pointer select-none font-noto text-[20px] text-light-black hover:text-green-gray"
-        @click.stop="toggleDropdown(index)">
-        <span class="z-10 relative">{{ item.name }}</span>
-        <!-- 底線（hover 用） -->
+        class="relative group px-2 py-1 cursor-pointer select-none font-noto text-[20px] text-light-black hover:text-green-gray">
+        <!-- router-link 包住可跳頁的選項 -->
+        <router-link
+          v-if="item.route"
+          :to="item.route"
+          class="z-10 relative"
+          @click.stop="toggleDropdown(index)">
+          {{ item.name }}
+        </router-link>
+        <!-- 其他情況 -->
+        <span v-else class="z-10 relative" @click.stop="toggleDropdown(index)">
+          {{ item.name }}
+        </span>
+
+        <!-- hover 底線 -->
         <div
           class="absolute bottom-0 left-0 w-full h-[3px] bg-green-light2 rounded-t-full scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></div>
       </li>
     </ul>
-
     <!-- 下拉選單（點擊展開） -->
     <div
       v-if="openIndex !== null"
@@ -198,9 +210,11 @@ onBeforeUnmount(() => {
         :icon="['fas', 'magnifying-glass']"
         class="text-light-black hover:text-light-gray"
         @click="toggleSearch" />
-      <font-awesome-icon
-        :icon="['fas', 'heart']"
-        class="text-light-black hover:text-red-500 transition-colors duration-300" />
+      <router-link to="/BookFilter">
+        <font-awesome-icon
+          :icon="['fas', 'heart']"
+          class="text-light-black hover:text-red-500 transition-colors duration-300"
+      /></router-link>
     </div>
     <!-- 搜尋欄下拉區塊 -->
     <div

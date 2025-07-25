@@ -27,10 +27,12 @@ const ctaBtn = [
         <p class="font-noto-sans">
           有些書適合晴天閱讀，有些則只在夜裡低語。這份書單，為孤獨、潮濕而需要字句取暖的你而準備。
         </p>
-        <div
-          class="text-green-main hover:underline underline-offset-4 decoration-2 cursor-pointer font-bold w-fit">
-          查看書單 &gt;
-        </div>
+        <router-link to="/BookShelfPage">
+          <div
+            class="text-green-main hover:underline underline-offset-4 decoration-2 cursor-pointer font-bold w-fit">
+            查看書單 &gt;
+          </div></router-link
+        >
       </div>
       <SwiperCard />
     </div>
@@ -52,10 +54,12 @@ const ctaBtn = [
         他輕輕笑了，像風穿過簷下藤蔓時不經意的顫動。「她只是個陌生人，不會坐在這裡，聽我說這些話。」
         我點點頭，將書闔上，終於不再假裝閱讀。「那我們來泡杯茶吧，這雨還會下很久。」
       </div>
-      <div
-        class="text-green-main hover:underline underline-offset-4 decoration-2 cursor-pointer font-bold w-fit">
-        閱讀試閱 &gt;
-      </div>
+      <router-link to="/ReadingPage">
+        <div
+          class="text-green-main hover:underline underline-offset-4 decoration-2 cursor-pointer font-bold w-fit">
+          閱讀試閱 &gt;
+        </div>
+      </router-link>
     </div>
   </section>
   <!-- CTA -->
@@ -77,6 +81,6 @@ const ctaBtn = [
   <!-- 書籍推薦區域 -->
   <section class="flex flex-col w-[1200px] mx-auto p-20 gap-20">
     <BookCarousel />
-    <BookCarousel title="好書推薦"/>
+    <BookCarousel title="好書推薦" />
   </section>
 </template>
