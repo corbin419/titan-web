@@ -20,11 +20,10 @@ const ctaBtn = [
 <template>
   <!-- 滑動banner -->
   <section class="bg-gradient-beige">
-    <div
-      class="flex flex-col-reverse md:flex-row px-4 md:px-[360px] py-10 md:py-[175px] justify-center gap-10 md:gap-20 items-center">
-      <div class="flex flex-col gap-4 w-[80%] md:w-auto">
-        <span class="font-noto text-3xl md:text-5xl font-bold text-black">在雨夜裡閱讀</span>
-        <span class="font-noto text-xl md:text-[40px] text-black">精選書籍</span>
+    <div class="flex flex-col-reverse lg:flex-row px-4 lg:px-[360px] py-10 lg:py-[175px] justify-center gap-10 lg:gap-20 items-center">
+      <div class="flex flex-col gap-4 w-full lg:w-auto">
+        <span class="font-noto text-3xl lg:text-5xl font-bold text-black">在雨夜裡閱讀</span>
+        <span class="font-noto text-xl lg:text-[40px] text-black">精選書籍</span>
         <p class="font-noto-sans">
           有些書適合晴天閱讀，有些則只在夜裡低語。這份書單，為孤獨、潮濕而需要字句取暖的你而準備。
         </p>
@@ -35,7 +34,7 @@ const ctaBtn = [
           </div>
         </router-link>
       </div>
-      <div class="w-full md:w-auto flex justify-center">
+      <div class="w-full lg:w-auto flex justify-center">
         <SwiperCard />
       </div>
     </div>
@@ -70,22 +69,22 @@ const ctaBtn = [
   <section
     class="bg-cover bg-center h-auto w-full flex flex-col justify-center items-center text-center px-4 md:px-[360px] py-10 md:py-[175px]"
     :style="{backgroundImage: `url(${CtaBanner})`}">
-    <div class="flex flex-col gap-8 w-full max-w-2xl">
-      <span class="font-noto text-[16px] md:text-3xl break-words">
+    <div class="flex flex-col gap-4 w-full max-w-2xl">
+      <span class="font-noto text-[14px] md:text-3xl break-words">
         在閱讀的世界裡迷路，也是一種發現。
       </span>
-      <div class="hidden md:flex divide-x-2 divide-gray-300 justify-center">
+      <div class="flex flex-wrap justify-center gap-2 md:divide-x-2 md:divide-gray-300 md:gap-0">
         <button
           v-for="btns in ctaBtn"
           :key="btns.id"
-          class="px-4 text-light-black font-bold first:pl-0 last:pr-0 hover:underline underline-offset-5 decoration-2 cursor-pointer">
+          class="px-3 text-sm md:text-base text-light-black font-bold first:pl-0 last:pr-0 hover:underline underline-offset-5 decoration-2 cursor-pointer">
           {{ btns.name }}
         </button>
       </div>
     </div>
   </section>
   <!-- 書籍推薦區域 -->
-  <section class="flex flex-col mx-auto p-20 gap-20">
+  <section class="flex flex-col mx-auto p-20 gap-20 max-w-[1200px]">
     <BookCarousel />
     <BookCarousel title="好書推薦" />
   </section>
