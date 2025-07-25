@@ -1,11 +1,11 @@
 <script setup>
 import NavBar from './components/NavBar.vue';
-import AuthorPage from './views/AuthorPage.vue';
 import MyFooter from '@/components/Footer.vue';
+import HomePage from './views/HomePage.vue';
 </script>
 
 <template>
   <NavBar />
-  <AuthorPage />
+  <HomePage />
   <MyFooter />
 </template>
