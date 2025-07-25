@@ -1,7 +1,34 @@
 <script setup>
+import {ref, onMounted, onBeforeUnmount} from 'vue';
 import EventCard from '@/components/EventCard.vue';
 import EventCard01 from '@/assets/img/EventCard/EventCard01.jpg';
 import EventCard02 from '@/assets/img/EventCard/EventCard02.jpg';
+
+const scrollRef = ref(null);
+let intervalId = null;
+
+// 根據裝置寬度決定滾動距離
+function getCardWidth() {
+  return window.innerWidth < 640 ? window.innerWidth : 336; // 320 卡片 + 16 gap
+}
+
+function scrollNext() {
+  const el = scrollRef.value;
+  if (!el) return;
+  el.scrollBy({left: getCardWidth(), behavior: 'smooth'});
+}
+function scrollPrev() {
+  const el = scrollRef.value;
+  if (!el) return;
+  el.scrollBy({left: -getCardWidth(), behavior: 'smooth'});
+}
+
+onMounted(() => {
+  intervalId = setInterval(scrollNext, 5000);
+});
+onBeforeUnmount(() => {
+  clearInterval(intervalId);
+});
 
 const eventInfo = [
   {
@@ -28,12 +55,12 @@ const eventInfo = [
 </script>
 
 <template>
-  <div class="relative w-[1200px]">
-    <h2 class="text-4xl font-noto mb-6 text-light-black">活動行事曆</h2>
+  <div class="relative w-full sm:w-[1200px] mx-auto">
+    <h2 class="text-2xl sm:text-4xl font-noto mb-6 text-light-black">活動行事曆</h2>
 
     <div
       ref="scrollRef"
-      class="flex overflow-x-auto scroll-smooth gap-4 scrollbar-hide snap-x snap-mandatory">
+      class="flex overflow-x-auto scroll-smooth gap-4 scrollbar-hide snap-x snap-mandatory px-2 sm:px-0">
       <EventCard
         v-for="event in eventInfo"
         :key="event.id"
@@ -43,19 +70,30 @@ const eventInfo = [
         :year="event.year"
         :time="event.time"
         :location="event.location"
-        :speaker="event.speaker" />
+        :speaker="event.speaker"
+        class="snap-start shrink-0 w-full sm:w-[320px]" />
     </div>
 
-    <!-- 左右按鈕 -->
+    <!-- 左右按鈕：手機隱藏 -->
     <button
-      class="absolute left-[-20px] top-1/2 -translate-y-1/2 bg-white shadow rounded-full z-10 w-10 h-10 flex items-center justify-center hover:bg-gray-100"
+      class="absolute left-[-20px] top-1/2 -translate-y-1/2 bg-white shadow rounded-full z-10 w-10 h-10 items-center justify-center hover:bg-gray-100 hidden sm:flex"
       @click="scrollPrev">
       ←
     </button>
     <button
-      class="absolute right-[-20px] top-1/2 -translate-y-1/2 bg-white shadow rounded-full z-10 w-10 h-10 flex items-center justify-center hover:bg-gray-100"
+      class="absolute right-[-20px] top-1/2 -translate-y-1/2 bg-white shadow rounded-full z-10 w-10 h-10 items-center justify-center hover:bg-gray-100 hidden sm:flex"
       @click="scrollNext">
       →
     </button>
   </div>
 </template>
+
+<style scoped>
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+</style>
