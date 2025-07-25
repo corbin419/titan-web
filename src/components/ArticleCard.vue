@@ -16,7 +16,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="flex flex-col max-w-[260px]">
+  <div class="flex flex-col max-w-[386px]">
     <!-- 圖片 -->
     <div>
       <img :src="image" :alt="title" class="w-full h-auto object-cover rounded" />

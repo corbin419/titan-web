@@ -56,7 +56,7 @@ const CardInfo = [
 </script>
 
 <template>
-  <div class="relative w-fit">
+  <div class="relative w-[1200px]">
     <h2 class="text-4xl font-noto mb-6 text-light-black">文字與觀點</h2>
 
     <div

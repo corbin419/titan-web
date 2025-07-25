@@ -18,6 +18,8 @@ import {
   faHeart,
   faAngleUp,
   faAngleDown,
+  faLocationDot,
+  faBookOpen,
 } from '@fortawesome/free-solid-svg-icons';
 import {faHeart as faHeartRegular} from '@fortawesome/free-regular-svg-icons';
 import {
@@ -26,6 +28,8 @@ import {
   faYoutube,
   faLine,
 } from '@fortawesome/free-brands-svg-icons';
+
+import {faClock} from '@fortawesome/free-regular-svg-icons';
 
 library.add(
   faMagnifyingGlass,
@@ -37,7 +41,10 @@ library.add(
   faBars,
   faHeart,
   faAngleUp,
-  faAngleDown
+  faAngleDown,
+  faClock,
+  faBookOpen,
+  faLocationDot
 );
 
 app.use(createPinia());
