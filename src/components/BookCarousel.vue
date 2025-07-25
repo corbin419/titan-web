@@ -1,6 +1,7 @@
 <script setup>
 import {ref, onMounted, onBeforeUnmount, nextTick} from 'vue';
 import BookCard from './SwiperBooksCards.vue';
+
 import BookCard01 from '@/assets/img/BookCards/booksCards-01.jpg';
 import BookCard02 from '@/assets/img/BookCards/booksCards-02.jpg';
 import BookCard03 from '@/assets/img/BookCards/booksCards-03.jpg';
@@ -22,8 +23,8 @@ const originalBooks = [
 
 const repeatedBooks = [...originalBooks, ...originalBooks, ...originalBooks];
 const containerRef = ref(null);
+const cardWidth = ref(220 + 24);
 let autoScrollTimer = null;
-const cardWidth = 220 + 24;
 
 const scrollByOffset = (offset) => {
   if (containerRef.value) {
@@ -35,23 +36,33 @@ const autoScroll = () => {
   if (!containerRef.value) return;
 
   const container = containerRef.value;
-  scrollByOffset(cardWidth);
+  scrollByOffset(cardWidth.value);
 
-  const maxScroll = cardWidth * originalBooks.length * 2;
+  const maxScroll = cardWidth.value * originalBooks.length * 2;
   if (container.scrollLeft >= maxScroll) {
-    container.scrollLeft = cardWidth * originalBooks.length;
+    container.scrollLeft = cardWidth.value * originalBooks.length;
+  }
+};
+
+const updateCardWidth = () => {
+  const card = containerRef.value?.querySelector('.book-card');
+  if (card) {
+    cardWidth.value = card.offsetWidth + 16;
   }
 };
 
 onMounted(() => {
   nextTick(() => {
-    containerRef.value.scrollLeft = cardWidth * originalBooks.length;
+    containerRef.value.scrollLeft = cardWidth.value * originalBooks.length;
+    updateCardWidth();
   });
+  window.addEventListener('resize', updateCardWidth);
   autoScrollTimer = setInterval(autoScroll, 4000);
 });
 
 onBeforeUnmount(() => {
   clearInterval(autoScrollTimer);
+  window.removeEventListener('resize', updateCardWidth);
 });
 </script>
 
@@ -68,7 +79,7 @@ onBeforeUnmount(() => {
         :image="book.image"
         :title="book.title"
         :author="book.author"
-        class="snap-start shrink-0 w-[220px]" />
+        class="book-card snap-start shrink-0 w-full max-w-[80%] sm:max-w-[70%] md:max-w-[60%] lg:max-w-[220px]" />
     </div>
 
     <button
@@ -87,5 +98,9 @@ onBeforeUnmount(() => {
 <style scoped>
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 </style>

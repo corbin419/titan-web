@@ -20,10 +20,11 @@ const ctaBtn = [
 <template>
   <!-- 滑動banner -->
   <section class="bg-gradient-beige">
-    <div class="flex px-[360px] py-[175px] justify-center gap-20 items-center">
-      <div class="flex flex-col gap-4">
-        <span class="font-noto text-5xl font-bold text-black">在雨夜裡閱讀</span>
-        <span class="font-noto text-[40px] text-black">精選書籍</span>
+    <div
+      class="flex flex-col-reverse md:flex-row px-4 md:px-[360px] py-10 md:py-[175px] justify-center gap-10 md:gap-20 items-center">
+      <div class="flex flex-col gap-4 w-[80%] md:w-auto">
+        <span class="font-noto text-3xl md:text-5xl font-bold text-black">在雨夜裡閱讀</span>
+        <span class="font-noto text-xl md:text-[40px] text-black">精選書籍</span>
         <p class="font-noto-sans">
           有些書適合晴天閱讀，有些則只在夜裡低語。這份書單，為孤獨、潮濕而需要字句取暖的你而準備。
         </p>
@@ -31,17 +32,20 @@ const ctaBtn = [
           <div
             class="text-green-main hover:underline underline-offset-4 decoration-2 cursor-pointer font-bold w-fit">
             查看書單 &gt;
-          </div></router-link
-        >
+          </div>
+        </router-link>
       </div>
-      <SwiperCard />
+      <div class="w-full md:w-auto flex justify-center">
+        <SwiperCard />
+      </div>
     </div>
   </section>
   <!-- 試閱Banner -->
-  <section class="flex justify-center px-[360px] py-[175px] gap-20">
-    <img :src="BannerBook" class="w-[508px] h-[596px]" />
-    <div class="flex flex-col gap-8 justify-center">
-      <span class="text-[40px] font-noto text-light-black">《時間煮雨的午後》</span>
+  <section
+    class="flex flex-col md:flex-row justify-center px-4 md:px-[360px] py-10 md:py-[175px] gap-10 md:gap-20 items-center">
+    <img :src="BannerBook" class="w-full md:w-[508px] h-auto md:h-[596px]" />
+    <div class="flex flex-col gap-8 justify-center w-full md:w-auto">
+      <span class="text-[32px] md:text-[40px] font-noto text-light-black">《時間煮雨的午後》</span>
       <div class="font-noto-sans text-[18px] text-light-black max-h-[224px] line-clamp-6">
         他總是在午後五點抵達，推開那扇永遠吱嘎作響的門。「妳又看那本書？」他問。我沒回應，只將書翻至下一頁。世界安靜地往前走，像每一個日常。
         窗外的雨已經下了一整天，像是忘記了停止的方法。屋簷滴水，滴答、滴答，和牆角那座老舊掛鐘的聲音交錯成一種溫吞的節奏。他脫下濕漉漉的外套，掛在椅背上，沒有多說什麼，只坐到我對面，拿起那本沒人看的報紙。
@@ -64,11 +68,13 @@ const ctaBtn = [
   </section>
   <!-- CTA -->
   <section
-    class="bg-cover bg-center h-[400px] w-full flex flex-col px-[360px] py-[175px]"
+    class="bg-cover bg-center h-auto w-full flex flex-col justify-center items-center text-center px-4 md:px-[360px] py-10 md:py-[175px]"
     :style="{backgroundImage: `url(${CtaBanner})`}">
-    <div class="flex flex-col h-[129px] gap-8">
-      <span class="font-noto text-3xl">在閱讀的世界裡迷路，也是一種發現。</span>
-      <div class="flex divide-x-2 divide-gray-300">
+    <div class="flex flex-col gap-8 w-full max-w-2xl">
+      <span class="font-noto text-[16px] md:text-3xl break-words">
+        在閱讀的世界裡迷路，也是一種發現。
+      </span>
+      <div class="hidden md:flex divide-x-2 divide-gray-300 justify-center">
         <button
           v-for="btns in ctaBtn"
           :key="btns.id"
@@ -79,7 +85,7 @@ const ctaBtn = [
     </div>
   </section>
   <!-- 書籍推薦區域 -->
-  <section class="flex flex-col w-[1200px] mx-auto p-20 gap-20">
+  <section class="flex flex-col mx-auto p-20 gap-20">
     <BookCarousel />
     <BookCarousel title="好書推薦" />
   </section>
