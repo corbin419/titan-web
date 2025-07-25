@@ -1,5 +1,5 @@
 <script setup>
-import {ref, onMounted, onBeforeUnmount} from 'vue';
+import {ref, onMounted, onBeforeUnmount, watch} from 'vue';
 import {useRouter} from 'vue-router';
 
 import LOGO from '@/assets/img/LOGO.jpg';
@@ -7,6 +7,9 @@ import summerBook from '@/assets/img/summer.jpg';
 import farBook from '@/assets/img/farBook.png';
 import giveUpBook from '@/assets/img/giveUp.png';
 import rainBook from '@/assets/img/rainBook.png';
+
+import MessageBanner from '@/assets/img/messageBanner.jpg';
+import Question from '@/assets/img/question.jpg';
 
 const router = useRouter();
 
@@ -35,12 +38,31 @@ const menuItems = [
   {
     name: '精選書單',
     type: 'withBanner',
-    options: ['新書推薦', '熱銷排行', '編輯推薦'],
-    banner: [
-      {title: '那年夏天的海風', img: summerBook},
-      {title: '當我開始遠行', img: farBook},
-      {title: '在雨中相逢', img: rainBook},
-      {title: '放棄之前，我從沒想過相信', img: giveUpBook},
+    options: [
+      {
+        label: '新書推薦',
+        books: [
+          {title: '那年夏天的海風', img: summerBook},
+          {title: '當我開始遠行', img: farBook},
+          {title: '在雨中相逢', img: rainBook},
+        ],
+      },
+      {
+        label: '熱銷排行',
+        books: [
+          {title: '放棄之前，我從沒想過相信', img: giveUpBook},
+          {title: '當我開始遠行', img: farBook},
+          {title: '那年夏天的海風', img: summerBook},
+        ],
+      },
+      {
+        label: '編輯推薦',
+        books: [
+          {title: '那年夏天的海風', img: summerBook},
+          {title: '在雨中相逢', img: rainBook},
+          {title: '放棄之前，我從沒想過相信', img: giveUpBook},
+        ],
+      },
     ],
   },
   {name: '作家專區', subitems: [], type: 'none', route: '/AuthorPage'},
@@ -50,8 +72,24 @@ const menuItems = [
   {
     name: '讀者專區',
     type: 'withBanner',
-    options: ['我的收藏', '讀者留言', '常見問題'],
-    banner: [],
+    options: [
+      {
+        label: '我的收藏',
+        books: [
+          {title: '那年夏天的海風', img: summerBook},
+          {title: '在雨中相逢', img: rainBook},
+          {title: '放棄之前，我從沒想過相信', img: giveUpBook},
+        ],
+      },
+      {
+        label: '讀者留言',
+        books: [{title: '', img: MessageBanner}],
+      },
+      {
+        label: '常見問題',
+        books: [{title: '', img: Question}],
+      },
+    ],
   },
 ];
 
@@ -71,6 +109,7 @@ const searchTypes = ['全部', '書名', '作者', 'ISBN'];
 const roundedBtn = ['法比歐', '高木直子', '台灣熱帶植物', '腦力訓練', '日語自學', '英語詞彙'];
 const isMobileMenuOpen = ref(false);
 const navRef = ref(null);
+const selectedOptionIndex = ref(0);
 
 function toggleDropdown(index) {
   const item = menuItems[index];
@@ -110,15 +149,15 @@ function onClickOutside(e) {
   }
 }
 
-function onSubitemClick(subitem) {
-  // 這裡可以擴充點擊子項目的邏輯，例如路由跳轉
-  console.log('點擊子項目:', subitem);
-}
-
-function onOptionClick(option) {
+function onOptionClick(option, i) {
+  selectedOptionIndex.value = i;
   // 這裡可以擴充點擊banner左側option的邏輯
   console.log('點擊選項:', option);
 }
+// 每次切換 openIndex 時，重設 selectedOptionIndex
+watch(openIndex, () => {
+  selectedOptionIndex.value = 0;
+});
 
 onMounted(() => {
   document.addEventListener('click', onClickOutside);
@@ -219,22 +258,41 @@ onBeforeUnmount(() => {
               v-for="(option, i) in menuItems[openIndex].options"
               :key="i"
               class="flex items-center cursor-pointer hover:text-green-gray px-6"
-              @click="onOptionClick(option)">
-              <span>{{ option }} &gt;</span>
+              :class="{'text-green-gray font-bold': selectedOptionIndex === i}"
+              @click="onOptionClick(option, i)">
+              <span class="font-noto-sans">{{ option.label }} &gt;</span>
             </div>
           </div>
           <div class="flex gap-4 w-3/4 overflow-x-auto justify-center px-2">
             <div
-              v-for="(book, i) in menuItems[openIndex].banner"
+              v-for="(book, i) in menuItems[openIndex].options[selectedOptionIndex].books"
               :key="i"
-              class="flex flex-col items-center cursor-pointer hover:shadow-lg transition p-2 rounded max-w-[120px]">
-              <img :src="book.img" :alt="book.title" class="w-24 h-32 object-cover rounded" />
-              <span class="mt-2 text-sm text-center text-gray">{{ book.title }}</span>
+              :class="[
+                'flex flex-col items-center cursor-pointer hover:shadow-lg transition rounded',
+                menuItems[openIndex].name === '讀者專區' &&
+                (menuItems[openIndex].options[selectedOptionIndex].label === '讀者留言' ||
+                  menuItems[openIndex].options[selectedOptionIndex].label === '常見問題')
+                  ? 'w-[400px] h-[180px] p-0 bg-white justify-center'
+                  : 'max-w-[120px] p-3',
+              ]">
+              <img
+                :src="book.img"
+                :alt="book.title"
+                :class="[
+                  menuItems[openIndex].name === '讀者專區' &&
+                  (menuItems[openIndex].options[selectedOptionIndex].label === '讀者留言' ||
+                    menuItems[openIndex].options[selectedOptionIndex].label === '常見問題')
+                    ? 'w-full h-full object-contain'
+                    : 'w-24 h-32 object-cover rounded',
+                ]" />
+              <span v-if="book.title" class="mt-2 text-sm text-center text-gray">{{
+                book.title
+              }}</span>
             </div>
           </div>
         </div>
       </div>
-      <div class="w-full flex justify-center items-center p-1 bg-light-gray">
+      <div class="w-full flex justify-center items-center p-1 bg-green-light2">
         <span>{{ menuItems[openIndex].name }} &gt;</span>
       </div>
     </div>
