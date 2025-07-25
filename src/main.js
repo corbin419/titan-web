@@ -20,6 +20,7 @@ import {
   faAngleDown,
   faLocationDot,
   faBookOpen,
+  faXmark,
 } from '@fortawesome/free-solid-svg-icons';
 import {faHeart as faHeartRegular} from '@fortawesome/free-regular-svg-icons';
 import {
@@ -44,7 +45,8 @@ library.add(
   faAngleDown,
   faClock,
   faBookOpen,
-  faLocationDot
+  faLocationDot,
+  faXmark
 );
 
 app.use(createPinia());
