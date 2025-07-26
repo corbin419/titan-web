@@ -43,7 +43,7 @@ defineProps({
       <!-- 左側時間區 -->
       <div class="text-light-black font-noto-sans mb-1 flex flex-col gap-2 w-[20%]">
         <div class="text-sm border-b-2 border-light-gray w-fit">{{ year }}</div>
-        <div class="text-4xl">{{ date }}</div>
+        <div class="text-2xl sm:text-4xl">{{ date }}</div>
       </div>
 
       <!-- 中線 -->
