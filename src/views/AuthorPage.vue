@@ -52,7 +52,7 @@ const trickHaHa = () => {
 
 <template>
   <!-- 作者介紹 -->
-  <section>
+  <section class="w-full xl:w-[1200px] mx-auto">
     <AuthorCard />
   </section>
   <!-- 作品列表 -->

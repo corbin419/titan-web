@@ -6,9 +6,9 @@ const isExpanded = ref(false);
 </script>
 
 <template>
-  <section class="flex flex-col md:flex-row h-auto md:h-[500px] p-6">
+  <section class="flex flex-col md:flex-row h-auto md:h-[500px]">
     <!-- 左邊圖片 -->
-    <div class="flex w-full md:w-1/2 justify-end items-center">
+    <div class="flex w-full md:w-1/2 justify-end items-center p-6">
       <img :src="AuthorImg" alt="author" class="w-full h-auto md:h-full object-contain p-6" />
     </div>
 
