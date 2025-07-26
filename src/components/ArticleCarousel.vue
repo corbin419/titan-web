@@ -9,17 +9,16 @@ import ArticleCard03 from '@/assets/img/ArticleCard/ArticleCard03.jpg';
 const scrollRef = ref(null);
 let intervalId = null;
 
-// 根據螢幕寬度設定卡片寬度（手機為視窗寬度，桌機為固定寬度）
 function getCardWidth() {
-  return window.innerWidth < 640 ? window.innerWidth : 416; // 320px 卡片 + 16px gap
+  return window.innerWidth < 640 ? window.innerWidth : 416; // 卡片寬 + gap
 }
 
-// 自動輪播
 function scrollNext() {
   const el = scrollRef.value;
   if (!el) return;
   el.scrollBy({left: getCardWidth(), behavior: 'smooth'});
 }
+
 function scrollPrev() {
   const el = scrollRef.value;
   if (!el) return;
@@ -35,6 +34,27 @@ onBeforeUnmount(() => {
 });
 
 const CardInfo = [
+  {
+    id: 1,
+    title: '《作家玩樂誌》布莉安娜．魏斯禮心靈探索之旅',
+    img: ArticleCard01,
+    content:
+      '本次邀請布莉安娜．魏斯禮，分享她對旅遊的見解與心靈轉化之路。對她而言，旅行不只是抵達目的地，更是一種重新認識自己的過程。她坦言，許多靈感並非來自寧靜書房，而是在某個陌生城市的小巷中，在遺世獨立的海邊黃昏裡浮現。',
+  },
+  {
+    id: 2,
+    title: '《作家訪談》筆下創造的靈魂，創作與心靈治癒',
+    img: ArticleCard02,
+    content:
+      '在布莉安娜．魏斯禮的作品中，角色彷彿擁有真實靈魂，深刻觸動讀者心底最柔軟的角落。她分享，創作是她與內在情緒對話的方式，是一種自我療癒的歷程。',
+  },
+  {
+    id: 3,
+    title: '《作家訪談》布莉安娜．魏斯禮──創作與生活的平衡',
+    img: ArticleCard03,
+    content:
+      '在文學與生活之間，布莉安娜．魏斯特找到屬於自己的節奏。她習慣在清晨散步後打開筆記本，記錄內心浮現的片段想法，讓生活自然地流進文字之中。',
+  },
   {
     id: 1,
     title: '《作家玩樂誌》布莉安娜．魏斯禮心靈探索之旅',
@@ -75,14 +95,14 @@ const CardInfo = [
         class="snap-start shrink-0 w-full sm:w-[400px]" />
     </div>
 
-    <!-- 左右按鈕：在手機上隱藏 -->
+    <!-- 左右按鈕（桌機版） -->
     <button
-      class="absolute left-[-20px] top-1/2 -translate-y-1/2 bg-white shadow rounded-full z-10 w-10 h-10 items-center justify-center hover:bg-gray-100 hidden sm:flex"
+      class="absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow rounded-full z-10 w-10 h-10 hidden sm:flex items-center justify-center hover:bg-gray-100"
       @click="scrollPrev">
       ←
     </button>
     <button
-      class="absolute right-[-20px] top-1/2 -translate-y-1/2 bg-white shadow rounded-full z-10 w-10 h-10 items-center justify-center hover:bg-gray-100 hidden sm:flex"
+      class="absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow rounded-full z-10 w-10 h-10 hidden sm:flex items-center justify-center hover:bg-gray-100"
       @click="scrollNext">
       →
     </button>
