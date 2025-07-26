@@ -214,7 +214,7 @@ onBeforeUnmount(() => {
           {{ item.name }}
         </span>
         <div
-          class="absolute bottom-0 left-0 w-full h-[3px] bg-green-light2 rounded-t-full scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></div>
+          class="absolute bottom-[-3px] left-0 w-full h-[3px] bg-green-light2 rounded-t-full scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"></div>
       </li>
     </ul>
 
