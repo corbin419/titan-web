@@ -23,9 +23,16 @@ const Pages = [
   {id: 5, img: Page04},
 ];
 
+const showModal = ref(false);
+
 const nextPage = () => {
-  if (currentPage.value < Pages.length - 1) currentPage.value++;
+  if (currentPage.value < Pages.length - 1) {
+    currentPage.value++;
+  } else {
+    showModal.value = true; // 已到最後一頁，再按就跳出 modal
+  }
 };
+
 const prevPage = () => {
   if (currentPage.value > 0) currentPage.value--;
 };
@@ -81,6 +88,60 @@ onBeforeUnmount(() => {
           alt="閱讀內容"
           class="max-h-[calc(100vh-200px)] max-w-[90vw] object-contain rounded-xl shadow-lg z-0 transition duration-300" />
       </div>
+
+      <!-- Modal 彈窗 -->
+      <transition name="fade">
+        <div
+          v-if="showModal"
+          class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div class="bg-white rounded-xl shadow-lg max-w-[600px] w-full text-center">
+            <div class="flex justify-between items-center border-b-2 border-light-gray">
+              <div class="p-4">
+                <font-awesome-icon
+                  icon="fa-solid fa-house"
+                  class="text-light-black hover:text-light-gray" />
+              </div>
+              <div class="font-noto text-xl text-light-black">試閱結束</div>
+              <div class="p-4">
+                <font-awesome-icon
+                  :icon="['fas', 'xmark']"
+                  class="text-xl text-light-black hover:text-light-gray"
+                  @click="showModal = false" />
+              </div>
+            </div>
+            <div class="flex p-8 gap-4">
+              <div class="max-w-[200px]">
+                <img :src="Book" alt="書名" />
+              </div>
+              <div class="flex flex-col w-full text-left justify-center gap-3">
+                <div class="font-noto text-4xl text-light-black font-bold">當我開始遠行之後</div>
+                <div class="font-noto text-green-gray font-bold">布莉安娜．魏斯禮</div>
+                <div class="flex gap-6">
+                  <div class="flex gap-2 font-noto font-bold text-light-black">
+                    <button class="border border-light-black rounded-full px-4 py-1">
+                      博客來
+                      <font-awesome-icon
+                        icon="fa-solid fa-arrow-up-right-from-square"
+                        class="text-light-black" />
+                    </button>
+                    <button class="border border-light-black rounded-full px-4 py-1">
+                      晨星書店
+                      <font-awesome-icon
+                        icon="fa-solid fa-arrow-up-right-from-square"
+                        class="text-light-black" />
+                    </button>
+                  </div>
+                  <div class="flex justify-center items-center">
+                    <font-awesome-icon
+                      icon="fa-regular fa-heart"
+                      class="text-2xl text-light-black hover:text-red-500 transition-colors duration-300" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </transition>
 
       <!-- Footer 觸發區 -->
       <div
