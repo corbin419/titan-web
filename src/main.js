@@ -21,6 +21,10 @@ import {
   faLocationDot,
   faBookOpen,
   faXmark,
+  faHouse,
+  faDisplay,
+  faEllipsis,
+  faComputer,
 } from '@fortawesome/free-solid-svg-icons';
 import {faHeart as faHeartRegular} from '@fortawesome/free-regular-svg-icons';
 import {
@@ -30,7 +34,7 @@ import {
   faLine,
 } from '@fortawesome/free-brands-svg-icons';
 
-import {faClock} from '@fortawesome/free-regular-svg-icons';
+import {faClock, faBookmark} from '@fortawesome/free-regular-svg-icons';
 
 library.add(
   faMagnifyingGlass,
@@ -46,7 +50,12 @@ library.add(
   faClock,
   faBookOpen,
   faLocationDot,
-  faXmark
+  faXmark,
+  faHouse,
+  faBookmark,
+  faDisplay,
+  faEllipsis,
+  faComputer
 );
 
 app.use(createPinia());
