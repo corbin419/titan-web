@@ -102,12 +102,12 @@ const CardInfo = [
 
     <!-- 左右按鈕（桌機版） -->
     <button
-      class="absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow rounded-full z-10 w-10 h-10 hidden sm:flex items-center justify-center hover:bg-gray-100"
+      class="absolute left-[-20px] top-1/2 -translate-y-1/2 bg-white shadow rounded-full z-10 w-10 h-10 hidden sm:flex items-center justify-center hover:bg-gray-100"
       @click="scrollPrev">
       ←
     </button>
     <button
-      class="absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow rounded-full z-10 w-10 h-10 hidden sm:flex items-center justify-center hover:bg-gray-100"
+      class="absolute right-[-20px] top-1/2 -translate-y-1/2 bg-white shadow rounded-full z-10 w-10 h-10 hidden sm:flex items-center justify-center hover:bg-gray-100"
       @click="scrollNext">
       →
     </button>
