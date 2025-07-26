@@ -9,7 +9,7 @@ let intervalId = null;
 
 // 根據裝置寬度決定滾動距離
 function getCardWidth() {
-  return window.innerWidth < 640 ? window.innerWidth : 336; // 320 卡片 + 16 gap
+  return window.innerWidth < 640 ? window.innerWidth : 608; // 320 卡片 + 16 gap
 }
 
 function scrollNext() {

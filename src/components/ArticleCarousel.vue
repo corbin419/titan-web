@@ -11,7 +11,7 @@ let intervalId = null;
 
 // 根據螢幕寬度設定卡片寬度（手機為視窗寬度，桌機為固定寬度）
 function getCardWidth() {
-  return window.innerWidth < 640 ? window.innerWidth : 336; // 320px 卡片 + 16px gap
+  return window.innerWidth < 640 ? window.innerWidth : 416; // 320px 卡片 + 16px gap
 }
 
 // 自動輪播
