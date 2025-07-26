@@ -72,7 +72,7 @@ const CardInfo = [
         :image="article.img"
         :title="article.title"
         :content="article.content"
-        class="snap-start shrink-0 w-full sm:w-[320px]" />
+        class="snap-start shrink-0 w-full sm:w-[400px]" />
     </div>
 
     <!-- 左右按鈕：在手機上隱藏 -->

@@ -111,7 +111,7 @@ const trickHaHa = () => {
   </section>
 
   <!-- 作者活動 -->
-  <section class="p-8">
+  <section class="flex flex-col gap-10 p-8 border">
     <div class="flex justify-center">
       <ArticleCarousel />
     </div>

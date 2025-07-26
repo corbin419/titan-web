@@ -58,9 +58,7 @@ const eventInfo = [
   <div class="relative w-full sm:w-[1200px] mx-auto">
     <h2 class="text-2xl sm:text-4xl font-noto mb-6 text-light-black">活動行事曆</h2>
 
-    <div
-      ref="scrollRef"
-      class="flex overflow-x-auto scroll-smooth gap-4 scrollbar-hide snap-x snap-mandatory px-2 sm:px-0">
+    <div ref="scrollRef" class="flex scroll-smooth gap-2 scrollbar-hide snap-x snap-mandatory">
       <EventCard
         v-for="event in eventInfo"
         :key="event.id"
@@ -71,7 +69,7 @@ const eventInfo = [
         :time="event.time"
         :location="event.location"
         :speaker="event.speaker"
-        class="snap-start shrink-0 w-full sm:w-[320px]" />
+        class="snap-start shrink-0 w-full sm:w-[600px]" />
     </div>
 
     <!-- 左右按鈕：手機隱藏 -->
