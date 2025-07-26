@@ -20,8 +20,8 @@ const ctaBtn = [
 <template>
   <!-- 滑動banner -->
   <section class="bg-gradient-beige">
-    <div class="flex flex-col-reverse lg:flex-row px-4 lg:px-[360px] py-10 lg:py-[175px] justify-center gap-10 lg:gap-20 items-center">
-      <div class="flex flex-col gap-4 w-full lg:w-auto">
+    <div class="flex flex-col-reverse lg:flex-row px-10 py-20 justify-center gap-10 items-center">
+      <div class="w-full md:w-1/2 flex flex-col gap-4">
         <span class="font-noto text-3xl lg:text-5xl font-bold text-black">在雨夜裡閱讀</span>
         <span class="font-noto text-xl lg:text-[40px] text-black">精選書籍</span>
         <p class="font-noto-sans">
@@ -34,16 +34,20 @@ const ctaBtn = [
           </div>
         </router-link>
       </div>
-      <div class="w-full lg:w-auto flex justify-center">
+      <div class="w-fit flex justify-center">
         <SwiperCard />
       </div>
     </div>
   </section>
   <!-- 試閱Banner -->
   <section
-    class="flex flex-col md:flex-row justify-center px-4 md:px-[360px] py-10 md:py-[175px] gap-10 md:gap-20 items-center">
-    <img :src="BannerBook" class="w-full md:w-[508px] h-auto md:h-[596px]" />
-    <div class="flex flex-col gap-8 justify-center w-full md:w-auto">
+    class="flex flex-col md:flex-row justify-center gap-10 items-center py-20 px-6 md:py-40 md:px-20">
+    <!-- 圖片區塊：手機上方 -->
+    <div class="w-full md:w-1/2 flex justify-center">
+      <img :src="BannerBook" :alt="bookName" />
+    </div>
+    <!-- 文字區塊：手機下方 -->
+    <div class="flex flex-col gap-8 justify-center w-full md:w-1/2">
       <span class="text-[32px] md:text-[40px] font-noto text-light-black">《時間煮雨的午後》</span>
       <div class="font-noto-sans text-[18px] text-light-black max-h-[224px] line-clamp-6">
         他總是在午後五點抵達，推開那扇永遠吱嘎作響的門。「妳又看那本書？」他問。我沒回應，只將書翻至下一頁。世界安靜地往前走，像每一個日常。
@@ -65,19 +69,22 @@ const ctaBtn = [
       </router-link>
     </div>
   </section>
+
   <!-- CTA -->
   <section
-    class="bg-cover bg-center h-auto w-full flex flex-col justify-center items-center text-center px-4 md:px-[360px] py-10 md:py-[175px]"
+    class="bg-contain xl:bg-cover bg-no-repeat bg-center h-[652px] w-full flex flex-col justify-center items-center text-center px-4 py-10"
     :style="{backgroundImage: `url(${CtaBanner})`}">
-    <div class="flex flex-col gap-4 w-full max-w-2xl">
-      <span class="font-noto text-[14px] md:text-3xl break-words">
+    <div class="flex flex-col gap-4 w-full xl:w-1/2">
+      <span
+        class="font-noto sm:font-bold text-light-black text-[14px] sm:text-[20px] md:text-3xl break-words text-start">
         在閱讀的世界裡迷路，也是一種發現。
       </span>
-      <div class="flex flex-wrap justify-center gap-2 md:divide-x-2 md:divide-gray-300 md:gap-0">
+      <div
+        class="hidden sm:flex flex-wrap gap-2 md:divide-x-2 md:divide-gray-300 md:gap-0 justify-start">
         <button
           v-for="btns in ctaBtn"
           :key="btns.id"
-          class="px-3 text-sm md:text-base text-light-black font-bold first:pl-0 last:pr-0 hover:underline underline-offset-5 decoration-2 cursor-pointer">
+          class="px-3 text-[14px] text-light-black font-bold first:pl-0 last:pr-0 hover:underline underline-offset-5 decoration-2 cursor-pointer">
           {{ btns.name }}
         </button>
       </div>
