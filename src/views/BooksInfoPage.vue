@@ -2,6 +2,60 @@
 import AuthorCard from '@/components/AuthorCard.vue';
 import BookCarousel from '@/components/BookCarousel.vue';
 import BookInfoCard from '@/components/BookInfoCard.vue';
+import ReaderComment from '@/components/ReaderComment.vue';
+
+import Avatar01 from '@/assets/img/Avatar/Avatar01.png';
+
+const Readers = [
+  {
+    id: 1,
+    CnName: '妮可．勒佩拉 醫師',
+    EnName: '妮可．勒佩拉 醫師',
+    avatar: Avatar01,
+    content:
+      '布莉安娜的書，是療癒的美麗展現。她以極度細膩又深刻的筆觸，勾勒出人們在面對自我破壞、內在批判與情緒困境時的心路歷程。書中的每一句話彷彿都經過時間沉澱，不僅是一種知識的傳遞，更是一種心靈的陪伴。她對情緒智商的洞見，不僅僅是理論，更像是一道道光，照亮那些我們以為無人能懂的內在陰影。而她關於深度轉變的思維架構，不是要求我們改變成更「完美」的人，而是引導我們回到自己、擁抱脆弱與真實。布莉安娜的書不是喧囂的勵志書寫，而是寧靜卻堅定的支持。',
+  },
+  {
+    id: 2,
+    CnName: '妮可．勒佩拉 醫師',
+    EnName: '妮可．勒佩拉 醫師',
+    avatar: Avatar01,
+    content:
+      '布莉安娜的書，是療癒的美麗展現。她以極度細膩又深刻的筆觸，勾勒出人們在面對自我破壞、內在批判與情緒困境時的心路歷程。書中的每一句話彷彿都經過時間沉澱，不僅是一種知識的傳遞，更是一種心靈的陪伴。她對情緒智商的洞見，不僅僅是理論，更像是一道道光，照亮那些我們以為無人能懂的內在陰影。而她關於深度轉變的思維架構，不是要求我們改變成更「完美」的人，而是引導我們回到自己、擁抱脆弱與真實。布莉安娜的書不是喧囂的勵志書寫，而是寧靜卻堅定的支持。',
+  },
+  {
+    id: 3,
+    CnName: '妮可．勒佩拉 醫師',
+    EnName: '妮可．勒佩拉 醫師',
+    avatar: Avatar01,
+    content:
+      '布莉安娜的書，是療癒的美麗展現。她以極度細膩又深刻的筆觸，勾勒出人們在面對自我破壞、內在批判與情緒困境時的心路歷程。書中的每一句話彷彿都經過時間沉澱，不僅是一種知識的傳遞，更是一種心靈的陪伴。她對情緒智商的洞見，不僅僅是理論，更像是一道道光，照亮那些我們以為無人能懂的內在陰影。而她關於深度轉變的思維架構，不是要求我們改變成更「完美」的人，而是引導我們回到自己、擁抱脆弱與真實。布莉安娜的書不是喧囂的勵志書寫，而是寧靜卻堅定的支持。',
+  },
+  {
+    id: 4,
+    CnName: '妮可．勒佩拉 醫師',
+    EnName: '妮可．勒佩拉 醫師',
+    avatar: Avatar01,
+    content:
+      '布莉安娜的書，是療癒的美麗展現。她以極度細膩又深刻的筆觸，勾勒出人們在面對自我破壞、內在批判與情緒困境時的心路歷程。書中的每一句話彷彿都經過時間沉澱，不僅是一種知識的傳遞，更是一種心靈的陪伴。她對情緒智商的洞見，不僅僅是理論，更像是一道道光，照亮那些我們以為無人能懂的內在陰影。而她關於深度轉變的思維架構，不是要求我們改變成更「完美」的人，而是引導我們回到自己、擁抱脆弱與真實。布莉安娜的書不是喧囂的勵志書寫，而是寧靜卻堅定的支持。',
+  },
+  {
+    id: 5,
+    CnName: '妮可．勒佩拉 醫師',
+    EnName: '妮可．勒佩拉 醫師',
+    avatar: Avatar01,
+    content:
+      '布莉安娜的書，是療癒的美麗展現。她以極度細膩又深刻的筆觸，勾勒出人們在面對自我破壞、內在批判與情緒困境時的心路歷程。書中的每一句話彷彿都經過時間沉澱，不僅是一種知識的傳遞，更是一種心靈的陪伴。她對情緒智商的洞見，不僅僅是理論，更像是一道道光，照亮那些我們以為無人能懂的內在陰影。而她關於深度轉變的思維架構，不是要求我們改變成更「完美」的人，而是引導我們回到自己、擁抱脆弱與真實。布莉安娜的書不是喧囂的勵志書寫，而是寧靜卻堅定的支持。',
+  },
+  {
+    id: 6,
+    CnName: '妮可．勒佩拉 醫師',
+    EnName: '妮可．勒佩拉 醫師',
+    avatar: Avatar01,
+    content:
+      '布莉安娜的書，是療癒的美麗展現。她以極度細膩又深刻的筆觸，勾勒出人們在面對自我破壞、內在批判與情緒困境時的心路歷程。書中的每一句話彷彿都經過時間沉澱，不僅是一種知識的傳遞，更是一種心靈的陪伴。她對情緒智商的洞見，不僅僅是理論，更像是一道道光，照亮那些我們以為無人能懂的內在陰影。而她關於深度轉變的思維架構，不是要求我們改變成更「完美」的人，而是引導我們回到自己、擁抱脆弱與真實。布莉安娜的書不是喧囂的勵志書寫，而是寧靜卻堅定的支持。',
+  },
+];
 </script>
 
 <template>
@@ -24,7 +78,7 @@ import BookInfoCard from '@/components/BookInfoCard.vue';
     <BookInfoCard />
   </section>
   <!-- 內容介紹 -->
-  <section class="xl:w-[1200px] mx-auto flex flex-col gap-4 my-20 px-10 xl:px-0">
+  <section class="xl:w-[1200px] mx-auto flex flex-col gap-8 my-20 px-10 xl:px-0">
     <div class="font-noto text-2xl font-bold text-light-black">內容簡介</div>
     <div class="flex gap-6 font-noto-sans font-bold text-light-black">
       <div class="hidden sm:block border border-l-11 border-green-light2 h-[72px]"></div>
@@ -53,9 +107,31 @@ import BookInfoCard from '@/components/BookInfoCard.vue';
     </div>
   </section>
   <!-- 讀者書評 -->
-  <section></section>
+  <section class="bg-gradient-green-light p-10 flex flex-col">
+    <div class="xl:w-[1200px] mx-auto flex flex-col gap-6">
+      <div class="mx-auto font-noto text-4xl font-bold">讀者書評</div>
+      <span class="mx-auto font-noto-sans">
+        本書自出版以來廣受好評，無論是文字風格、主題深度，或是情節張力，都引發眾多讀者共鳴。
+      </span>
+      <span class="mx-auto font-noto-sans">
+        相信不論你是首次接觸本書主題，還是長期關注此領域的讀者，都能從中獲得啟發與感動。
+      </span>
+      <div class="flex flex-wrap w-full">
+        <div
+          v-for="reader in Readers"
+          :key="reader.id"
+          class="w-full sm:w-1/2 lg:w-1/3 flex justify-center">
+          <ReaderComment
+            :ReaderContent="reader.content"
+            :ReaderAvatar="reader.avatar"
+            :ReaderCnName="reader.CnName"
+            :ReaderEnName="reader.EnName" />
+        </div>
+      </div>
+    </div>
+  </section>
   <!-- 作者 -->
-  <section class="xl:w-[1200px] mx-auto flex flex-col">
+  <section class="xl:w-[1200px] mx-auto flex flex-col mt-20">
     <AuthorCard />
   </section>
   <!-- 更多好書推薦 -->
