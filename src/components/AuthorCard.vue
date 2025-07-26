@@ -6,15 +6,15 @@ const isExpanded = ref(false);
 </script>
 
 <template>
-  <section class="flex flex-col md:flex-row h-auto md:h-[500px]">
+  <section class="flex flex-col md:flex-row px-10 xl:p-0">
     <!-- 左邊圖片 -->
-    <div class="flex w-full md:w-1/2 justify-end items-center p-6">
-      <img :src="AuthorImg" alt="author" class="w-full h-auto md:h-full object-contain p-6" />
+    <div class="flex mx-auto">
+      <img :src="AuthorImg" alt="author" class="object-contain" />
     </div>
 
     <!-- 右邊文字 -->
-    <div class="flex flex-col w-full md:w-1/2 justify-center items-start gap-3 p-6">
-      <div class="text-[32px] md:text-[40px]">布莉安娜．魏斯禮</div>
+    <div class="flex flex-col w-full justify-center items-start gap-3 p-6">
+      <div class="text-[24px] md:text-[40px]">布莉安娜．魏斯禮</div>
 
       <!-- 可展開的內容 -->
       <div

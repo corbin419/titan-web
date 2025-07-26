@@ -92,7 +92,7 @@ const ctaBtn = [
   </section>
   <!-- 書籍推薦區域 -->
   <section class="flex flex-col mx-auto p-20 gap-20 max-w-[1200px]">
-    <BookCarousel />
+    <BookCarousel title="發燒暢銷書"/>
     <BookCarousel title="好書推薦" />
   </section>
 </template>

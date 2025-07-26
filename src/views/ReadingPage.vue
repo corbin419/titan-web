@@ -96,11 +96,13 @@ onBeforeUnmount(() => {
           class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <div class="bg-white rounded-xl shadow-lg max-w-[600px] w-full text-center">
             <div class="flex justify-between items-center border-b-2 border-light-gray">
-              <div class="p-4">
-                <font-awesome-icon
-                  icon="fa-solid fa-house"
-                  class="text-light-black hover:text-light-gray" />
-              </div>
+              <router-link to="/BooksInfoPage">
+                <div class="p-4">
+                  <font-awesome-icon
+                    icon="fa-solid fa-house"
+                    class="text-light-black hover:text-light-gray" />
+                </div>
+              </router-link>
               <div class="font-noto text-xl text-light-black">試閱結束</div>
               <div class="p-4">
                 <font-awesome-icon

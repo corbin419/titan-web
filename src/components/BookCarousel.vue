@@ -10,7 +10,7 @@ import BookCard04 from '@/assets/img/BookCards/booksCards-04.jpg';
 const props = defineProps({
   title: {
     type: String,
-    default: '發燒暢銷書',
+    default: '',
   },
 });
 

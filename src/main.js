@@ -26,6 +26,7 @@ import {
   faEllipsis,
   faComputer,
   faArrowUpRightFromSquare,
+  faGlasses,
 } from '@fortawesome/free-solid-svg-icons';
 import {faHeart as faHeartRegular} from '@fortawesome/free-regular-svg-icons';
 import {
@@ -58,7 +59,8 @@ library.add(
   faEllipsis,
   faXmark,
   faComputer,
-  faArrowUpRightFromSquare
+  faArrowUpRightFromSquare,
+  faGlasses
 );
 
 app.use(createPinia());

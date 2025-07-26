@@ -52,14 +52,15 @@ const trickHaHa = () => {
 
 <template>
   <!-- 作者介紹 -->
-  <section class="w-full xl:w-[1200px] mx-auto">
+  <section class="w-full xl:w-[1200px] mx-auto pt-20">
     <AuthorCard />
   </section>
   <!-- 作品列表 -->
-  <section class="flex flex-col gap-4 items-center mx-auto p-6 w-fit">
-    <div class="text-2xl font-noto text-left w-full">完整作品列表</div>
+  <section class="flex flex-col gap-8 items-center mx-auto xl:w-[1200px] py-10">
+    <div class="text-2xl font-noto text-left xl:w-[1200px]">完整作品列表</div>
     <!-- 書籍區 -->
-    <div class="grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 transition-all duration-500">
+    <div
+      class="grid gap-4 grid-cols-1 sm:grid-cols-3 md:grid-cols-4 transition-all duration-500 xl:w-[1200px]">
       <div v-for="(book, index) in visibleBooks" :key="index">
         <SwiperBooksCards
           :image="book.image"
