@@ -16,9 +16,14 @@ function getCardWidth() {
 function scrollNext() {
   const el = scrollRef.value;
   if (!el) return;
-  el.scrollBy({left: getCardWidth(), behavior: 'smooth'});
-}
 
+  // 如果已經快要捲到最右邊了，就回到開頭
+  if (el.scrollLeft + el.clientWidth >= el.scrollWidth - getCardWidth()) {
+    el.scrollTo({left: 0, behavior: 'smooth'});
+  } else {
+    el.scrollBy({left: getCardWidth(), behavior: 'smooth'});
+  }
+}
 function scrollPrev() {
   const el = scrollRef.value;
   if (!el) return;
