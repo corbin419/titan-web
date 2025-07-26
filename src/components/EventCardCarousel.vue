@@ -15,8 +15,15 @@ function getCardWidth() {
 function scrollNext() {
   const el = scrollRef.value;
   if (!el) return;
-  el.scrollBy({left: getCardWidth(), behavior: 'smooth'});
+
+  // 如果已經快要捲到最右邊了，就回到開頭
+  if (el.scrollLeft + el.clientWidth >= el.scrollWidth - getCardWidth()) {
+    el.scrollTo({left: 0, behavior: 'smooth'});
+  } else {
+    el.scrollBy({left: getCardWidth(), behavior: 'smooth'});
+  }
 }
+
 function scrollPrev() {
   const el = scrollRef.value;
   if (!el) return;
@@ -55,7 +62,7 @@ const eventInfo = [
 </script>
 
 <template>
-  <div class="relative w-full sm:w-[1200px] mx-auto">
+  <div class="relative w-full xl:w-[1200px] mx-auto">
     <h2 class="text-2xl sm:text-4xl font-noto mb-6 text-light-black">活動行事曆</h2>
 
     <div
