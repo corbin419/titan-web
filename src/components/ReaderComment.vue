@@ -1,14 +1,28 @@
 <script setup>
-defineProps({
+import { ref } from 'vue'
+const props = defineProps({
   ReaderContent: String,
   ReaderAvatar: Image,
   ReaderCnName: String,
   ReaderEnName: String,
+  id: [String, Number],
 });
+const emit = defineEmits(['active']);
+const isActive = ref(false);
+function CardClick() {
+  isActive.value = !isActive.value;
+  emit('active', props.id);
+}
+
+
 </script>
 
 <template>
-  <div class="w-full sm:w-[380px]">
+  <div
+    :class="isActive ? 'w-full' : 'w-full max-w-[380px]'"
+    @click="CardClick"
+    style="cursor: pointer"
+  >
     <div class="relative bg-white rounded-md flex flex-col">
       <div
         class="px-12 my-6 font-noto-sans text-light-black text-base leading-relaxed line-clamp-8">
