@@ -66,7 +66,7 @@ const menuItems = [
     ],
   },
   {name: '作家專區', subitems: [], type: 'none', route: '/AuthorPage'},
-  {name: '閱讀專欄', subitems: [], type: 'none'},
+  {name: '閱讀專欄', subitems: [], type: 'none', route: '/BooksInfoPage'},
   {name: '最新動態', subitems: [], type: 'none'},
   {name: '關於大田', subitems: [], type: 'none'},
   {
@@ -171,7 +171,7 @@ onBeforeUnmount(() => {
 <template>
   <nav
     ref="navRef"
-    class="relative bg-white shadow-md px-4 h-[100px] flex items-center w-full"
+    class="relative bg-white shadow-md px-10 h-[100px] flex items-center w-full"
     aria-label="主導覽列">
     <!-- 左側：手機顯示漢堡，電腦顯示LOGO -->
     <div class="flex items-center flex-1">
@@ -358,15 +358,15 @@ onBeforeUnmount(() => {
         role="dialog"
         aria-modal="true"
         aria-label="手機選單">
-        <div class="p-4">
-          <button @click="toggleMobileMenu" class="mb-4" aria-label="關閉手機選單">
+        <div class="p-4 flex flex-col">
+          <button @click="toggleMobileMenu" class="mb-4 w-fit ml-auto" aria-label="關閉手機選單">
             <font-awesome-icon :icon="['fas', 'xmark']" class="text-xl" />
           </button>
           <ul class="flex flex-col gap-3">
             <li
               v-for="(item, index) in menuItems"
               :key="index"
-              class="text-lg text-light-black hover:text-green-gray"
+              class="text-lg text-light-black hover:text-green-gray border-b-2 border-gradient-green-light text-center py-2 font-noto-sans"
               @click="toggleMobileMenu">
               <router-link v-if="item.route" :to="item.route">
                 {{ item.name }}

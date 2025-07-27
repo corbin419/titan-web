@@ -30,9 +30,9 @@ import FarBook from '@/assets/img/BookInfo/FarBook.jpg';
         <span>定 價： 399元</span>
       </div>
       <!-- 按鈕區塊 -->
-      <div class="flex flex-col sm:flex-row gap-3">
+      <div class="flex flex-col sm:flex-row gap-3 xl:justify-start">
         <button
-          class="group border border-light-black rounded-full px-4 py-1 font-noto-sans text-light-black hover:bg-gradient-green-light transition-colors duration-300 flex items-center">
+          class="group border border-light-black rounded-full px-4 py-1 font-noto-sans text-light-black hover:bg-gradient-green-light transition-colors duration-300 flex items-center w-fit mx-auto sm:mx-0">
           收藏
           <font-awesome-icon
             icon="fa-regular fa-heart"
@@ -40,7 +40,7 @@ import FarBook from '@/assets/img/BookInfo/FarBook.jpg';
         </button>
 
         <button
-          class="group border border-light-black rounded-full px-4 py-1 font-noto-sans text-light-black hover:bg-gradient-green-light flex items-center">
+          class="group border border-light-black rounded-full px-4 py-1 font-noto-sans text-light-black hover:bg-gradient-green-light flex items-center w-fit mx-auto sm:mx-0">
           博客來
           <font-awesome-icon
             icon="fa-solid fa-arrow-up-right-from-square"
@@ -48,7 +48,7 @@ import FarBook from '@/assets/img/BookInfo/FarBook.jpg';
         </button>
 
         <button
-          class="group border border-light-black rounded-full px-4 py-1 font-noto-sans text-light-black hover:bg-gradient-green-light flex items-center">
+          class="group border border-light-black rounded-full px-4 py-1 font-noto-sans text-light-black hover:bg-gradient-green-light flex items-center w-fit mx-auto sm:mx-0">
           晨星書店
           <font-awesome-icon
             icon="fa-solid fa-arrow-up-right-from-square"
