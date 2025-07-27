@@ -227,7 +227,7 @@ onBeforeUnmount(() => {
         class="text-light-black hover:text-light-gray cursor-pointer"
         @click="toggleSearch"
         aria-label="切換搜尋框" />
-      <router-link to="/BookFilter" aria-label="我的收藏">
+      <router-link to="/BookShelfPage" aria-label="我的收藏">
         <font-awesome-icon
           :icon="['fas', 'heart']"
           class="text-light-black hover:text-red-500 cursor-pointer" />
