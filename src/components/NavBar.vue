@@ -113,6 +113,17 @@ const isMobileMenuOpen = ref(false);
 const navRef = ref(null);
 const selectedOptionIndex = ref(0);
 
+function handleMobileMenuItemClick(item) {
+  toggleMobileMenu();
+
+  // 若為手機版並有 route2（例如全部書籍）
+  if (window.innerWidth < 1024 && item.route2) {
+    router.push(item.route2);
+  } else if (window.innerWidth < 1024 && item.route) {
+    router.push(item.route);
+  }
+}
+
 function toggleDropdown(index) {
   const item = menuItems[index];
   const hasDropdown =
@@ -377,11 +388,8 @@ onBeforeUnmount(() => {
               v-for="(item, index) in menuItems"
               :key="index"
               class="text-lg text-light-black hover:text-green-gray border-b-2 border-gradient-green-light text-center py-2 font-noto-sans"
-              @click="toggleMobileMenu">
-              <router-link v-if="item.route" :to="item.route">
-                {{ item.name }}
-              </router-link>
-              <span v-else>{{ item.name }}</span>
+              @click="handleMobileMenuItemClick(item)">
+              {{ item.name }}
             </li>
           </ul>
         </div>
