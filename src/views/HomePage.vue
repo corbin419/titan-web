@@ -44,7 +44,7 @@ const ctaBtn = [
     class="flex flex-col md:flex-row justify-center gap-10 items-center py-20 px-6 md:py-40 md:px-20">
     <!-- 圖片區塊：手機上方 -->
     <div class="w-full md:w-1/2 flex justify-center">
-      <img :src="BannerBook" :alt="bookName" />
+      <img :src="BannerBook" alt="書名" />
     </div>
     <!-- 文字區塊：手機下方 -->
     <div class="flex flex-col gap-8 justify-center w-full md:w-1/2">

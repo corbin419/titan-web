@@ -34,6 +34,7 @@ const menuItems = [
       '得獎作品',
       '周邊商品',
     ],
+    route2: '/BookFilter',
   },
   {
     name: '精選書單',
@@ -90,6 +91,7 @@ const menuItems = [
         books: [{title: '', img: Question}],
       },
     ],
+    route2: '/BookShelfPage',
   },
 ];
 
@@ -293,7 +295,15 @@ onBeforeUnmount(() => {
         </div>
       </div>
       <div class="w-full flex justify-center items-center p-1 bg-green-light2">
-        <span>{{ menuItems[openIndex].name }} &gt;</span>
+        <router-link v-if="menuItems[openIndex].route2" :to="menuItems[openIndex].route2">
+          <span
+            class="font-noto-sans text-light-black hover:underline underline-offset-4 decoration-2"
+            >{{ menuItems[openIndex].name }} &gt;</span
+          >
+        </router-link>
+        <span v-else class="cursor-default text-gray-400">
+          {{ menuItems[openIndex].name }} &gt;
+        </span>
       </div>
     </div>
 

@@ -13,9 +13,7 @@ const hideLayoutPages = ['/ReadingPage']; // 可以放入不想顯示 nav/footer
   <div>
     <!-- 判斷是否顯示 NavBar -->
     <NavBar v-if="!hideLayoutPages.includes(route.path)" />
-
     <router-view />
-
     <!-- 判斷是否顯示 Footer -->
     <MyFooter v-if="!hideLayoutPages.includes(route.path)" />
   </div>
