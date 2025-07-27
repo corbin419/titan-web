@@ -179,20 +179,20 @@ onBeforeUnmount(() => {
     <div class="flex items-center flex-1">
       <!-- 漢堡選單：手機/平板顯示，電腦隱藏 -->
       <button
-        class="md:hidden text-2xl text-light-black"
+        class="lg:hidden text-2xl text-light-black"
         @click="toggleMobileMenu"
         aria-label="切換手機選單">
         <font-awesome-icon :icon="['fas', 'bars']" />
       </button>
 
       <!-- LOGO：電腦板顯示，手機隱藏 -->
-      <router-link to="/" class="hidden md:flex items-center" aria-label="首頁">
+      <router-link to="/" class="hidden lg:flex items-center" aria-label="首頁">
         <img :src="LOGO" alt="LOGO" class="w-[60px] h-[60px]" />
       </router-link>
     </div>
 
     <!-- 中間：手機/平板置中LOGO，電腦隱藏 -->
-    <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:hidden">
+    <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 lg:hidden">
       <router-link to="/" aria-label="首頁">
         <img :src="LOGO" alt="LOGO" class="w-[60px] h-[60px]" />
       </router-link>
@@ -200,7 +200,7 @@ onBeforeUnmount(() => {
 
     <!-- 中間選單：電腦顯示，手機隱藏 -->
     <ul
-      class="hidden md:flex justify-center gap-6 text-light-black font-noto text-[20px] flex-nowrap"
+      class="hidden lg:flex justify-center gap-6 text-light-black font-noto text-[20px] flex-nowrap"
       role="menubar">
       <li
         v-for="(item, index) in menuItems"
