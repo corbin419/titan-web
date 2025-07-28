@@ -9,7 +9,7 @@ defineProps({
 
 <template>
   <div
-    class="flex flex-col sm:flex-row max-w-[600px] p-4 rounded-[4px] shadow shadow-light-black sm:shadow-none sm:hover:shadow">
+    class="flex flex-col md:flex-row max-w-[600px] p-4 rounded-[4px] shadow shadow-light-black sm:shadow-none sm:hover:shadow">
     <div class="mx-auto sm:my-auto">
       <img :src="FavBook" alt="BookName" />
     </div>

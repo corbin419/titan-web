@@ -114,7 +114,7 @@ const Books = [
       <SideBar />
     </div>
 
-    <div class="flex flex-col w-full px-8 xl:px-[180px] py-10">
+    <div class="flex flex-col w-full px-2 xl:px-[100px] py-10">
       <!-- 頂部資訊 -->
       <div class="w-full flex justify-between p-4">
         <span class="font-noto text-[28px] font-bold text-light-black">全部書籍</span>
